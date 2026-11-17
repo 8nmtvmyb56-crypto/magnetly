@@ -1,0 +1,1824 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Magnetly 🧲</title>
+
+<style>
+:root {
+  --verde: #156f6a;
+  --scuro: #104e4b;
+  --sfondo: #eef5f3;
+  --bordo: #dbe9e4;
+  --testo: #243634;
+  --soft: #647773;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--sfondo);
+  color: var(--testo);
+}
+
+header {
+  background: var(--verde);
+  color: white;
+  text-align: center;
+  padding: 34px 20px;
+  border-radius: 0 0 28px 28px;
+}
+
+header h1 {
+  font-size: 48px;
+  margin: 0;
+}
+
+header p { margin-bottom: 0; }
+
+main {
+  max-width: 1180px;
+  margin: 28px auto;
+  padding: 0 16px 40px;
+}
+
+.card {
+  background: white;
+  border-radius: 24px;
+  padding: 24px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 16px #0000000b;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.stat-box {
+  background: white;
+  border-radius: 20px;
+  padding: 22px;
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--verde);
+}
+
+.stat-label {
+  margin-top: 8px;
+}
+
+.centro {
+  text-align: center;
+  margin: 18px 0;
+}
+
+button {
+  border: none;
+  border-radius: 12px;
+  padding: 12px 18px;
+  font: inherit;
+  cursor: pointer;
+  background: var(--verde);
+  color: white;
+}
+
+button:hover { filter: brightness(0.93); }
+button:disabled { opacity: .5; cursor: wait; }
+
+.btn-principale {
+  padding: 15px 28px;
+  font-weight: 700;
+}
+
+.btn-secondario {
+  background: #e4eeeb;
+  color: var(--verde);
+}
+
+.btn-elimina {
+  background: #fbe9e9;
+  color: #ad3030;
+}
+
+.btn-foto {
+  background: #e4eeeb;
+  color: #ad3030;
+  margin-top: 8px;
+}
+
+.titolo-sezione {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.titolo-sezione h2 {
+  margin: 0 0 15px;
+}
+
+.griglia-calamite {
+  display: grid;
+  gap: 16px;
+}
+
+.calamita-card {
+  display: grid;
+  grid-template-columns: 190px 1fr auto;
+  align-items: center;
+  gap: 18px;
+  background: #f8fbfa;
+  padding: 14px;
+  border: 1px solid var(--bordo);
+  border-radius: 18px;
+}
+
+.calamita-card img,
+.no-foto {
+  width: 100%;
+  height: 155px;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+.no-foto {
+  background: #eaf3f0;
+  display: grid;
+  place-items: center;
+  font-size: 40px;
+}
+
+.calamita-info h3 {
+  color: var(--verde);
+  font-size: 23px;
+  margin: 0 0 10px;
+}
+
+.meta {
+  margin: 8px 0;
+  overflow-wrap: anywhere;
+}
+
+.azioni {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+#moduloCard { display: none; }
+
+label {
+  display: block;
+  font-weight: 650;
+  margin: 14px 0 6px;
+}
+
+input, select, textarea {
+  width: 100%;
+  border: 1px solid #cfe0da;
+  border-radius: 12px;
+  padding: 13px;
+  font: inherit;
+  background: white;
+  color: var(--testo);
+}
+
+.riga {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.anteprima {
+  display: none;
+  width: 220px;
+  max-width: 100%;
+  max-height: 220px;
+  object-fit: contain;
+  border-radius: 12px;
+  margin-top: 14px;
+}
+
+.azioni-form {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.descrizione {
+  color: var(--soft);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.collezione-top {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 24px;
+  margin: 24px 0;
+  align-items: center;
+}
+
+.anello {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: conic-gradient(
+    var(--verde) 0deg,
+    #dcece7 0deg 360deg
+  );
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+
+.anello::before {
+  content: "";
+  position: absolute;
+  width: 135px;
+  height: 135px;
+  border-radius: 50%;
+  background: white;
+}
+
+.anello-testo {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.anello-testo strong {
+  display: block;
+  font-size: 30px;
+}
+
+.riepilogo {
+  display: grid;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.barra-riga {
+  display: grid;
+  grid-template-columns: 90px 1fr 65px;
+  align-items: center;
+  gap: 12px;
+  margin: 14px 0;
+}
+
+.barra {
+  background: #dce9e5;
+  height: 14px;
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+.barra-fill {
+  background: var(--verde);
+  height: 100%;
+  width: 0%;
+}
+
+details.continente {
+  border: 1px solid var(--bordo);
+  border-radius: 18px;
+  margin-top: 12px;
+  overflow: hidden;
+}
+
+details.continente summary {
+  cursor: pointer;
+  padding: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-weight: 750;
+}
+
+.continente-nome {
+  font-size: 19px;
+}
+
+.pill {
+  color: var(--verde);
+  background: #e1efeb;
+  border-radius: 30px;
+  padding: 7px 14px;
+}
+
+.continente-contenuto {
+  padding: 0 18px 18px;
+}
+
+.doppia-colonna {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.blocco-paesi {
+  padding: 18px;
+  border-radius: 16px;
+  background: #f7faf9;
+}
+
+.blocco-posseduti {
+  background: #eef8f5;
+}
+
+.blocco-paesi h4 {
+  margin: 0 0 12px;
+}
+
+.paese-riga {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--bordo);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.paese-riga:last-child {
+  border-bottom: none;
+}
+
+.paese-nome {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.bandiera { font-size: 23px; }
+
+.tag {
+  color: var(--verde);
+  background: #d2ece4;
+  border-radius: 30px;
+  padding: 6px 12px;
+  white-space: nowrap;
+  font-size: 13px;
+}
+
+@media (max-width: 850px) {
+  .collezione-top,
+  .doppia-colonna {
+    grid-template-columns: 1fr;
+  }
+
+  .calamita-card {
+    grid-template-columns: 1fr;
+  }
+
+  .azioni {
+    flex-direction: row;
+  }
+}
+
+@media (max-width: 550px) {
+  .stats { gap: 6px; }
+  .stat-box { padding: 12px 5px; }
+  .stat-number { font-size: 25px; }
+  .stat-label { font-size: 12px; }
+  .riga { grid-template-columns: 1fr; }
+  .barra-riga { grid-template-columns: 1fr; }
+  header h1 { font-size: 36px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>🧲 Magnetly</h1>
+  <p>Ogni calamita racconta una storia</p>
+</header>
+
+<main>
+
+<section class="stats">
+  <div class="stat-box">
+    <div class="stat-number">
+      🧲 <span id="totaleCalamite">0</span>
+    </div>
+    <div class="stat-label">Calamite</div>
+  </div>
+
+  <div class="stat-box">
+    <div class="stat-number">
+      🌍 <span id="totalePaesi">0</span>
+    </div>
+    <div class="stat-label">Paesi collezionati</div>
+  </div>
+
+  <div class="stat-box">
+    <div class="stat-number" id="percentualeMondo">
+      0%
+    </div>
+    <div class="stat-label">Mondo completato</div>
+    <small id="sottotitoloMondo"></small>
+  </div>
+</section>
+
+<div class="centro">
+  <button id="apriModulo" class="btn-principale">
+    + Aggiungi calamita
+  </button>
+</div>
+
+<!-- MODULO AGGIUNTA E MODIFICA -->
+
+<section class="card" id="moduloCard">
+
+  <h2 id="titoloModulo">🧲 Nuova calamita</h2>
+
+  <form id="formCalamita">
+
+    <label for="nome">Nome della calamita *</label>
+    <input id="nome" required
+      placeholder="Es. Valencia">
+
+    <label for="paese">Paese *</label>
+    <input id="paese" list="listaPaesiInput"
+      required placeholder="Es. Spagna">
+
+    <datalist id="listaPaesiInput"></datalist>
+
+    <label for="citta">Città o località</label>
+    <input id="citta"
+      placeholder="Es. Valencia">
+
+    <div class="riga">
+      <div>
+        <label for="mese">Mese</label>
+        <select id="mese">
+          <option value="">Non specificato</option>
+          <option>Gennaio</option>
+          <option>Febbraio</option>
+          <option>Marzo</option>
+          <option>Aprile</option>
+          <option>Maggio</option>
+          <option>Giugno</option>
+          <option>Luglio</option>
+          <option>Agosto</option>
+          <option>Settembre</option>
+          <option>Ottobre</option>
+          <option>Novembre</option>
+          <option>Dicembre</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="anno">Anno</label>
+        <input id="anno" type="number"
+          min="1900" max="2100"
+          placeholder="Es. 2026">
+      </div>
+    </div>
+
+    <label for="provenienza">
+      Chi l'ha comprata o regalata?
+    </label>
+    <input id="provenienza"
+      placeholder="Es. Ale e Auri">
+
+    <label for="foto">Fotografia</label>
+    <input id="foto" type="file"
+      accept="image/*">
+
+    <img id="anteprima" class="anteprima"
+      alt="Fotografia calamita">
+
+    <div>
+      <button type="button"
+        id="rimuoviFoto"
+        class="btn-foto"
+        style="display:none;">
+        Rimuovi fotografia
+      </button>
+    </div>
+
+    <p class="descrizione">
+      In modalità modifica, se non scegli
+      una nuova fotografia, rimane quella attuale.
+    </p>
+
+    <label for="note">Note e ricordi</label>
+    <textarea id="note" rows="3"></textarea>
+
+    <div class="azioni-form">
+      <button id="salvaCalamita"
+        type="submit" class="btn-principale">
+        Salva calamita
+      </button>
+
+      <button id="annulla"
+        type="button" class="btn-secondario">
+        Annulla
+      </button>
+    </div>
+
+  </form>
+</section>
+
+<!-- LE MIE CALAMITE -->
+
+<section class="card">
+
+  <div class="titolo-sezione">
+    <h2>🧲 Le mie calamite</h2>
+    <span class="descrizione">
+      Ordinate per data ricevuta ↓
+    </span>
+  </div>
+
+  <div id="listaCalamite"
+    class="griglia-calamite"></div>
+
+</section>
+
+<!-- LA MIA COLLEZIONE -->
+
+<section class="card">
+
+  <h2>🌍 La mia collezione</h2>
+
+  <p class="descrizione">
+    Panoramica della collezione per continente
+  </p>
+
+  <div class="collezione-top">
+
+    <div>
+      <div class="anello" id="anelloMondo">
+        <div class="anello-testo">
+          <strong id="anelloPercentuale">0%</strong>
+          Mondo
+        </div>
+      </div>
+
+      <div class="riepilogo">
+        <div>
+          🌍 <strong id="riepilogoPaesi">0</strong>
+          Paesi collezionati
+        </div>
+
+        <div>
+          🧲 <strong id="riepilogoCalamite">0</strong>
+          Calamite
+        </div>
+
+        <div>
+          🚩 <strong id="riepilogoTotali">0</strong>
+          Paesi totali
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h3>Completamento per continente</h3>
+      <div id="barreContinenti"></div>
+    </div>
+  </div>
+
+  <div id="listaContinenti"></div>
+
+</section>
+
+<!-- BACKUP -->
+
+<section class="card">
+
+  <h2>💾 Backup della collezione</h2>
+
+  <p class="descrizione">
+    Salva una copia delle tue calamite,
+    comprese le fotografie.
+  </p>
+
+  <button id="esportaBackup">
+    ⬇️ Esporta backup
+  </button>
+
+  <button id="importaBackup"
+    class="btn-secondario">
+    ⬆️ Importa backup
+  </button>
+
+  <input id="fileBackup"
+    type="file"
+    accept=".json,application/json"
+    hidden>
+
+</section>
+
+</main>
+
+<script>
+
+// ===============================
+// CATALOGO GEOGRAFICO
+// ===============================
+
+// Un paese appartiene a un solo continente
+// nel catalogo, per evitare doppi conteggi.
+
+const GRUPPI = [
+  {
+    nome: "Europa",
+    codici: `
+      AL AD AM AT AZ BY BE BA BG HR CY CZ DK
+      EE FI FR GE DE GR HU IS IE IT XK LV LI
+      LT LU MT MD MC ME NL MK NO PL PT RO RU
+      SM RS SK SI ES SE CH TR UA GB VA
+    `
+  },
+  {
+    nome: "Asia",
+    codici: `
+      AF BH BD BT BN KH CN KP KR AE PH JP
+      JO IN ID IR IQ IL KW LA LB MY MV MN
+      MM NP OM PK PS QA SA SG LK SY TJ TH
+      TL TM UZ VN YE TW KG KZ HK MO
+    `
+  },
+  {
+    nome: "America",
+    codici: `
+      AG AR BS BB BZ BO BR CA CL CO CR CU
+      DM DO EC SV GD GT GY HT HN JM MX NI
+      PA PY PE KN LC VC SR TT US UY VE
+    `
+  },
+  {
+    nome: "Africa",
+    codici: `
+      DZ AO BJ BW BF BI CV CM TD KM CG CD
+      CI DJ EG ER SZ ET GA GM GH GN GW GQ
+      KE LS LR LY MG MW ML MA MR MU MZ NA
+      NE NG CF RW ST SN SC SL SO ZA SS SD
+      TZ TG TN UG ZM ZW
+    `
+  },
+  {
+    nome: "Oceania",
+    codici: `
+      AU FJ KI MH FM NR NZ PW PG WS SB TO
+      TV VU
+    `
+  }
+];
+
+const NOMI_SPECIALI = {
+  XK: "Kosovo",
+  CZ: "Cechia",
+  GB: "Regno Unito",
+  NL: "Paesi Bassi",
+  VA: "Città del Vaticano",
+  TR: "Turchia",
+  MK: "Macedonia del Nord",
+  KR: "Corea del Sud",
+  KP: "Corea del Nord"
+};
+
+const nomiInternazionali =
+  new Intl.DisplayNames(["it"], {
+    type: "region"
+  });
+
+const CONTINENTI = GRUPPI.map(gruppo => ({
+  nome: gruppo.nome,
+  paesi: gruppo.codici
+    .trim()
+    .split(/\s+/)
+    .map(codice => ({
+      codice,
+      nome: NOMI_SPECIALI[codice] ||
+        nomiInternazionali.of(codice)
+    }))
+    .sort((a, b) =>
+      a.nome.localeCompare(b.nome, "it")
+    )
+}));
+
+const TUTTI_PAESI =
+  CONTINENTI.flatMap(c => c.paesi);
+
+const ALIAS = {
+  "spagna": "ES",
+  "germania": "DE",
+  "italia": "IT",
+  "francia": "FR",
+  "inghilterra": "GB",
+  "gran bretagna": "GB",
+  "regno unito": "GB",
+  "usa": "US",
+  "america": "US",
+  "stati uniti d'america": "US",
+  "olanda": "NL",
+  "paesi bassi": "NL",
+  "repubblica ceca": "CZ",
+  "cechia": "CZ",
+  "vaticano": "VA",
+  "citta del vaticano": "VA",
+  "turchia": "TR",
+  "kosovo": "XK",
+  "corea del sud": "KR",
+  "corea del nord": "KP"
+};
+
+function $(id) {
+  return document.getElementById(id);
+}
+
+function normalizza(testo) {
+  return String(testo || "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g, " ");
+}
+
+function codicePaese(nome) {
+  const valore = normalizza(nome);
+
+  if (ALIAS[valore]) {
+    return ALIAS[valore];
+  }
+
+  const trovato = TUTTI_PAESI.find(p =>
+    normalizza(p.nome) === valore ||
+    normalizza(p.codice) === valore ||
+    normalizza(nomiInternazionali.of(p.codice))
+      === valore
+  );
+
+  return trovato ? trovato.codice : "";
+}
+
+function bandiera(codice) {
+  if (!codice || codice.length !== 2) {
+    return "🏳️";
+  }
+
+  return [...codice.toUpperCase()]
+    .map(lettera =>
+      String.fromCodePoint(
+        127397 + lettera.charCodeAt(0)
+      )
+    )
+    .join("");
+}
+
+function percentuale(valore, totale) {
+  return totale ? valore / totale * 100 : 0;
+}
+
+function formattaPercentuale(valore) {
+  return valore.toLocaleString("it-IT", {
+    minimumFractionDigits: 1,
+    maximumFractionDigits: 1
+  }) + "%";
+}
+
+// ===============================
+// DATI DELLE CALAMITE
+// ===============================
+
+const CHIAVE = "calamite";
+
+let calamite = [];
+
+// Indica quale calamita stiamo modificando.
+let idInModifica = null;
+
+// Fotografia corrente durante la modifica.
+let fotoCorrente = "";
+
+const MESI = [
+  "Gennaio", "Febbraio", "Marzo",
+  "Aprile", "Maggio", "Giugno",
+  "Luglio", "Agosto", "Settembre",
+  "Ottobre", "Novembre", "Dicembre"
+];
+
+function normalizzaCalamita(dato, indice) {
+  if (typeof dato === "string") {
+    dato = { nome: dato };
+  }
+
+  if (!dato || typeof dato !== "object" ||
+      Array.isArray(dato)) {
+    throw new Error("Calamita non valida");
+  }
+
+  const campi = [
+    "nome", "paese", "citta", "mese",
+    "anno", "provenienza", "note", "foto"
+  ];
+
+  const risultato = {
+    id: typeof dato.id === "string" && dato.id
+      ? dato.id
+      : "vecchia-" + indice
+  };
+
+  campi.forEach(campo => {
+    const valore = dato[campo];
+
+    if (valore != null &&
+        typeof valore !== "string" &&
+        typeof valore !== "number") {
+      throw new Error("Campo non valido");
+    }
+
+    risultato[campo] = String(valore ?? "");
+  });
+
+  return risultato;
+}
+
+try {
+  const dati = JSON.parse(
+    localStorage.getItem(CHIAVE)
+  );
+
+  if (Array.isArray(dati)) {
+    calamite = dati.map(normalizzaCalamita);
+  }
+} catch (errore) {
+  alert(
+    "Non riesco a leggere le calamite salvate."
+  );
+}
+
+function salvaDati(nuoviDati) {
+  try {
+    localStorage.setItem(
+      CHIAVE,
+      JSON.stringify(nuoviDati)
+    );
+
+    calamite = nuoviDati;
+    aggiornaApp();
+
+    return true;
+
+  } catch (errore) {
+    alert(
+      "Salvataggio non riuscito. " +
+      "La memoria del browser potrebbe essere piena."
+    );
+
+    return false;
+  }
+}
+
+// ===============================
+// MODULO AGGIUNTA / MODIFICA
+// ===============================
+
+function apriModuloNuovo() {
+  idInModifica = null;
+  fotoCorrente = "";
+
+  $("formCalamita").reset();
+  $("titoloModulo").textContent =
+    "🧲 Nuova calamita";
+
+  $("salvaCalamita").textContent =
+    "Salva calamita";
+
+  aggiornaAnteprima();
+
+  $("moduloCard").style.display = "block";
+
+  $("moduloCard").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+function modificaCalamita(id) {
+  const calamita = calamite.find(
+    c => c.id === id
+  );
+
+  if (!calamita) return;
+
+  idInModifica = id;
+  fotoCorrente = calamita.foto || "";
+
+  $("nome").value = calamita.nome;
+  $("paese").value = calamita.paese;
+  $("citta").value = calamita.citta;
+  $("mese").value = calamita.mese;
+  $("anno").value = calamita.anno;
+  $("provenienza").value = calamita.provenienza;
+  $("note").value = calamita.note;
+
+  // Nessun nuovo file selezionato:
+  // manteniamo la fotografia già salvata.
+  $("foto").value = "";
+
+  $("titoloModulo").textContent =
+    "✏️ Modifica calamita";
+
+  $("salvaCalamita").textContent =
+    "Salva modifiche";
+
+  aggiornaAnteprima();
+
+  $("moduloCard").style.display = "block";
+
+  $("moduloCard").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+function chiudiModulo() {
+  $("formCalamita").reset();
+
+  idInModifica = null;
+  fotoCorrente = "";
+
+  $("anteprima").removeAttribute("src");
+  $("anteprima").style.display = "none";
+
+  $("rimuoviFoto").style.display = "none";
+
+  $("moduloCard").style.display = "none";
+}
+
+$("apriModulo").addEventListener(
+  "click", apriModuloNuovo
+);
+
+$("annulla").addEventListener(
+  "click", chiudiModulo
+);
+
+// ===============================
+// FOTOGRAFIE
+// ===============================
+
+function aggiornaAnteprima() {
+  const anteprima = $("anteprima");
+  const rimuovi = $("rimuoviFoto");
+
+  if (fotoCorrente) {
+    anteprima.src = fotoCorrente;
+    anteprima.style.display = "block";
+    rimuovi.style.display = "inline-block";
+  } else {
+    anteprima.removeAttribute("src");
+    anteprima.style.display = "none";
+    rimuovi.style.display = "none";
+  }
+}
+
+function riduciFoto(file) {
+  return new Promise((resolve, reject) => {
+
+    if (!file) {
+      resolve("");
+      return;
+    }
+
+    const lettore = new FileReader();
+
+    lettore.onerror = reject;
+
+    lettore.onload = () => {
+      const immagine = new Image();
+
+      immagine.onerror = reject;
+
+      immagine.onload = () => {
+        const rapporto = Math.min(
+          1,
+          900 / Math.max(
+            immagine.width,
+            immagine.height
+          )
+        );
+
+        const canvas =
+          document.createElement("canvas");
+
+        canvas.width = Math.max(
+          1,
+          Math.round(
+            immagine.width * rapporto
+          )
+        );
+
+        canvas.height = Math.max(
+          1,
+          Math.round(
+            immagine.height * rapporto
+          )
+        );
+
+        canvas.getContext("2d").drawImage(
+          immagine,
+          0, 0,
+          canvas.width,
+          canvas.height
+        );
+
+        resolve(
+          canvas.toDataURL(
+            "image/jpeg", 0.7
+          )
+        );
+      };
+
+      immagine.src = lettore.result;
+    };
+
+    lettore.readAsDataURL(file);
+  });
+}
+
+$("foto").addEventListener(
+  "change", async () => {
+
+    const file = $("foto").files[0];
+
+    if (!file) return;
+
+    try {
+      fotoCorrente = await riduciFoto(file);
+      aggiornaAnteprima();
+
+    } catch (errore) {
+      alert("Impossibile leggere la fotografia.");
+      $("foto").value = "";
+    }
+  }
+);
+
+$("rimuoviFoto").addEventListener(
+  "click", () => {
+
+    fotoCorrente = "";
+    $("foto").value = "";
+
+    aggiornaAnteprima();
+  }
+);
+
+// ===============================
+// SALVATAGGIO FORM
+// ===============================
+
+$("formCalamita").addEventListener(
+  "submit", evento => {
+
+    evento.preventDefault();
+
+    const calamita = {
+      id: idInModifica ||
+        crypto.randomUUID(),
+
+      nome: $("nome").value.trim(),
+      paese: $("paese").value.trim(),
+      citta: $("citta").value.trim(),
+      mese: $("mese").value,
+      anno: $("anno").value,
+      provenienza:
+        $("provenienza").value.trim(),
+      note: $("note").value.trim(),
+      foto: fotoCorrente
+    };
+
+    const codice = codicePaese(
+      calamita.paese
+    );
+
+    if (!codice) {
+      const conferma = confirm(
+        "Il paese non è riconosciuto nel catalogo.\n" +
+        "La calamita sarà salvata, ma non " +
+        "conteggiata nelle statistiche.\n\n" +
+        "Vuoi continuare?"
+      );
+
+      if (!conferma) return;
+    }
+
+    let nuoveCalamite;
+
+    if (idInModifica) {
+      // Sostituisce solo la calamita esistente.
+      nuoveCalamite = calamite.map(c =>
+        c.id === idInModifica ? calamita : c
+      );
+
+    } else {
+      // Aggiunge una nuova calamita.
+      nuoveCalamite = [
+        ...calamite,
+        calamita
+      ];
+    }
+
+    if (salvaDati(nuoveCalamite)) {
+      chiudiModulo();
+    }
+  }
+);
+
+// ===============================
+// SUGGERIMENTI DEI PAESI
+// ===============================
+
+TUTTI_PAESI.forEach(paese => {
+  const opzione =
+    document.createElement("option");
+
+  opzione.value = paese.nome;
+
+  $("listaPaesiInput").appendChild(
+    opzione
+  );
+});
+
+// ===============================
+// ORDINAMENTO CALAMITE
+// ===============================
+
+function valoreData(calamita) {
+  const anno = Number(calamita.anno);
+
+  if (!anno) return -1;
+
+  const mese =
+    MESI.indexOf(calamita.mese) + 1;
+
+  return anno * 100 +
+    Math.max(0, mese);
+}
+
+function ordinaCalamite() {
+  return [...calamite].sort((a, b) => {
+    const differenza =
+      valoreData(b) - valoreData(a);
+
+    if (differenza !== 0) {
+      return differenza;
+    }
+
+    return a.nome.localeCompare(
+      b.nome, "it"
+    );
+  });
+}
+
+// ===============================
+// CREAZIONE ELEMENTI
+// ===============================
+
+function testo(tag, contenuto, classe = "") {
+  const elemento =
+    document.createElement(tag);
+
+  elemento.textContent = contenuto;
+
+  if (classe) {
+    elemento.className = classe;
+  }
+
+  return elemento;
+}
+
+// ===============================
+// LE MIE CALAMITE
+// ===============================
+
+function renderCalamite() {
+  const lista = $("listaCalamite");
+  lista.replaceChildren();
+
+  const ordinate = ordinaCalamite();
+
+  if (!ordinate.length) {
+    lista.appendChild(
+      testo("p", "Non hai ancora aggiunto calamite.")
+    );
+    return;
+  }
+
+  ordinate.forEach(calamita => {
+
+    const scheda =
+      document.createElement("div");
+
+    scheda.className = "calamita-card";
+
+    if (calamita.foto) {
+      const img =
+        document.createElement("img");
+
+      img.src = calamita.foto;
+      img.alt = calamita.nome;
+
+      scheda.appendChild(img);
+
+    } else {
+      scheda.appendChild(
+        testo("div", "🧲", "no-foto")
+      );
+    }
+
+    const info =
+      document.createElement("div");
+
+    info.className = "calamita-info";
+
+    info.appendChild(
+      testo("h3", calamita.nome)
+    );
+
+    if (calamita.paese) {
+      const codice =
+        codicePaese(calamita.paese);
+
+      const posizione = [
+        calamita.citta,
+        calamita.paese
+      ].filter(Boolean).join(", ");
+
+      info.appendChild(
+        testo(
+          "div",
+          "📍 " + bandiera(codice) +
+          " " + posizione,
+          "meta"
+        )
+      );
+    }
+
+    const periodo = [
+      calamita.mese,
+      calamita.anno
+    ].filter(Boolean).join(" ");
+
+    if (periodo) {
+      info.appendChild(
+        testo(
+          "div",
+          "🗓️ " + periodo,
+          "meta"
+        )
+      );
+    }
+
+    if (calamita.provenienza) {
+      info.appendChild(
+        testo(
+          "div",
+          "🎁 " + calamita.provenienza,
+          "meta"
+        )
+      );
+    }
+
+    if (calamita.note) {
+      info.appendChild(
+        testo(
+          "div",
+          "📝 " + calamita.note,
+          "meta"
+        )
+      );
+    }
+
+    scheda.appendChild(info);
+
+    const azioni =
+      document.createElement("div");
+
+    azioni.className = "azioni";
+
+    // NUOVO PULSANTE MODIFICA
+
+    const modifica =
+      document.createElement("button");
+
+    modifica.textContent = "✏️ Modifica";
+
+    modifica.addEventListener(
+      "click", () => {
+        modificaCalamita(calamita.id);
+      }
+    );
+
+    azioni.appendChild(modifica);
+
+    // PULSANTE ELIMINA
+
+    const elimina =
+      document.createElement("button");
+
+    elimina.className = "btn-elimina";
+    elimina.textContent = "Elimina";
+
+    elimina.addEventListener(
+      "click", () => {
+
+        if (confirm(
+          "Vuoi eliminare questa calamita?"
+        )) {
+          const nuove = calamite.filter(
+            c => c.id !== calamita.id
+          );
+
+          if (salvaDati(nuove) &&
+              idInModifica === calamita.id) {
+            chiudiModulo();
+          }
+        }
+      }
+    );
+
+    azioni.appendChild(elimina);
+
+    scheda.appendChild(azioni);
+    lista.appendChild(scheda);
+  });
+}
+
+// ===============================
+// STATISTICHE GEOGRAFICHE
+// ===============================
+
+function calcolaCollezione() {
+  const conteggi = new Map();
+
+  calamite.forEach(calamita => {
+    const codice =
+      codicePaese(calamita.paese);
+
+    if (!codice) return;
+
+    conteggi.set(
+      codice,
+      (conteggi.get(codice) || 0) + 1
+    );
+  });
+
+  return conteggi;
+}
+
+function renderStatistiche(conteggi) {
+  const totale = TUTTI_PAESI.length;
+  const posseduti = conteggi.size;
+
+  const perc = percentuale(
+    posseduti, totale
+  );
+
+  $("totaleCalamite").textContent =
+    calamite.length;
+
+  $("totalePaesi").textContent =
+    posseduti;
+
+  $("percentualeMondo").textContent =
+    formattaPercentuale(perc);
+
+  $("sottotitoloMondo").textContent =
+    "(" + posseduti + " su " + totale + ")";
+
+  $("anelloPercentuale").textContent =
+    formattaPercentuale(perc);
+
+  $("riepilogoPaesi").textContent =
+    posseduti;
+
+  $("riepilogoCalamite").textContent =
+    calamite.length;
+
+  $("riepilogoTotali").textContent =
+    totale;
+
+  const gradi = perc * 3.6;
+
+  $("anelloMondo").style.background =
+    "conic-gradient(" +
+    "var(--verde) 0deg " + gradi + "deg," +
+    "#dcece7 " + gradi + "deg 360deg)";
+}
+
+// ===============================
+// BARRE DEI CONTINENTI
+// ===============================
+
+function renderBarre(conteggi) {
+  const lista = $("barreContinenti");
+  lista.replaceChildren();
+
+  CONTINENTI.forEach(continente => {
+
+    const posseduti =
+      continente.paesi.filter(
+        p => conteggi.has(p.codice)
+      ).length;
+
+    const perc = percentuale(
+      posseduti,
+      continente.paesi.length
+    );
+
+    const riga =
+      document.createElement("div");
+
+    riga.className = "barra-riga";
+
+    riga.appendChild(
+      testo("span", continente.nome)
+    );
+
+    const barra =
+      document.createElement("div");
+
+    barra.className = "barra";
+
+    const riempimento =
+      document.createElement("div");
+
+    riempimento.className = "barra-fill";
+    riempimento.style.width = perc + "%";
+
+    barra.appendChild(riempimento);
+    riga.appendChild(barra);
+
+    riga.appendChild(
+      testo("span", formattaPercentuale(perc))
+    );
+
+    lista.appendChild(riga);
+  });
+}
+
+// ===============================
+// ELENCO PAESI PER CONTINENTE
+// ===============================
+
+function creaRigaPaese(paese, numero = null) {
+  const riga =
+    document.createElement("div");
+
+  riga.className = "paese-riga";
+
+  const nome =
+    document.createElement("div");
+
+  nome.className = "paese-nome";
+
+  nome.appendChild(
+    testo(
+      "span",
+      bandiera(paese.codice),
+      "bandiera"
+    )
+  );
+
+  nome.appendChild(
+    testo("span", paese.nome)
+  );
+
+  riga.appendChild(nome);
+
+  if (numero !== null) {
+    riga.appendChild(
+      testo(
+        "span",
+        numero +
+        (numero === 1
+          ? " calamita"
+          : " calamite"),
+        "tag"
+      )
+    );
+  }
+
+  return riga;
+}
+
+function renderContinenti(conteggi) {
+  const lista = $("listaContinenti");
+
+  // Ricordiamo quali sezioni erano aperte.
+  const precedenti = new Map(
+    [...lista.querySelectorAll(
+      "details[data-continente]"
+    )].map(elemento => [
+      elemento.dataset.continente,
+      elemento.open
+    ])
+  );
+
+  lista.replaceChildren();
+
+  CONTINENTI.forEach((continente, indice) => {
+
+    const posseduti =
+      continente.paesi.filter(
+        p => conteggi.has(p.codice)
+      );
+
+    const mancanti =
+      continente.paesi.filter(
+        p => !conteggi.has(p.codice)
+      );
+
+    const totale =
+      continente.paesi.length;
+
+    const perc = percentuale(
+      posseduti.length,
+      totale
+    );
+
+    const details =
+      document.createElement("details");
+
+    details.className = "continente";
+    details.dataset.continente = continente.nome;
+
+    // Europa inizialmente aperta.
+    details.open = precedenti.has(continente.nome)
+      ? precedenti.get(continente.nome)
+      : indice === 0;
+
+    const summary =
+      document.createElement("summary");
+
+    summary.appendChild(
+      testo(
+        "span",
+        "🗺️ " + continente.nome,
+        "continente-nome"
+      )
+    );
+
+    summary.appendChild(
+      testo(
+        "span",
+        posseduti.length + " / " +
+        totale + " paesi"
+      )
+    );
+
+    summary.appendChild(
+      testo(
+        "span",
+        formattaPercentuale(perc),
+        "pill"
+      )
+    );
+
+    details.appendChild(summary);
+
+    const contenuto =
+      document.createElement("div");
+
+    contenuto.className =
+      "continente-contenuto";
+
+    const colonne =
+      document.createElement("div");
+
+    colonne.className = "doppia-colonna";
+
+    // PAESI POSSEDUTI
+
+    const bloccoPosseduti =
+      document.createElement("div");
+
+    bloccoPosseduti.className =
+      "blocco-paesi blocco-posseduti";
+
+    bloccoPosseduti.appendChild(
+      testo(
+        "h4",
+        "✅ Paesi nella tua collezione (" +
+        posseduti.length + ")"
+      )
+    );
+
+    if (!posseduti.length) {
+      bloccoPosseduti.appendChild(
+        testo(
+          "p",
+          "Non hai ancora calamite di questo continente."
+        )
+      );
+    }
+
+    posseduti.forEach(paese => {
+      bloccoPosseduti.appendChild(
+        creaRigaPaese(
+          paese,
+          conteggi.get(paese.codice)
+        )
+      );
+    });
+
+    // PAESI MANCANTI
+
+    const bloccoMancanti =
+      document.createElement("div");
+
+    bloccoMancanti.className =
+      "blocco-paesi";
+
+    bloccoMancanti.appendChild(
+      testo(
+        "h4",
+        "🕘 Paesi da collezionare (" +
+        mancanti.length + ")"
+      )
+    );
+
+    if (!mancanti.length) {
+      bloccoMancanti.appendChild(
+        testo(
+          "p",
+          "Continente completato! 🎉"
+        )
+      );
+    }
+
+    mancanti.forEach(paese => {
+      bloccoMancanti.appendChild(
+        creaRigaPaese(paese)
+      );
+    });
+
+    colonne.appendChild(bloccoPosseduti);
+    colonne.appendChild(bloccoMancanti);
+
+    contenuto.appendChild(colonne);
+    details.appendChild(contenuto);
+
+    lista.appendChild(details);
+  });
+}
+
+// ===============================
+// BACKUP
+// ===============================
+
+$("esportaBackup").addEventListener(
+  "click", () => {
+
+    const backup = {
+      applicazione: "Magnetly",
+      versione: 1,
+      dataEsportazione:
+        new Date().toISOString(),
+      calamite
+    };
+
+    const blob = new Blob(
+      [JSON.stringify(backup, null, 2)],
+      { type: "application/json" }
+    );
+
+    const url =
+      URL.createObjectURL(blob);
+
+    const link =
+      document.createElement("a");
+
+    link.href = url;
+
+    link.download =
+      "Magnetly-backup-" +
+      new Date().toISOString().slice(0, 10) +
+      ".json";
+
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+
+    setTimeout(
+      () => URL.revokeObjectURL(url),
+      1000
+    );
+  }
+);
+
+$("importaBackup").addEventListener(
+  "click", () => {
+    $("fileBackup").click();
+  }
+);
+
+$("fileBackup").addEventListener(
+  "change", async () => {
+
+    const file = $("fileBackup").files[0];
+
+    if (!file) return;
+
+    try {
+      const contenuto = await file.text();
+      const backup = JSON.parse(contenuto);
+
+      if (
+        !backup ||
+        backup.applicazione !== "Magnetly" ||
+        backup.versione !== 1 ||
+        !Array.isArray(backup.calamite)
+      ) {
+        throw new Error(
+          "Formato non valido"
+        );
+      }
+
+      const nuove = backup.calamite.map(
+        normalizzaCalamita
+      );
+
+      const ids = nuove.map(c => c.id);
+
+      if (new Set(ids).size !== ids.length) {
+        throw new Error(
+          "Il backup contiene ID duplicati"
+        );
+      }
+
+      const conferma = confirm(
+        "Vuoi sostituire la collezione " +
+        "attuale con quella del backup?"
+      );
+
+      if (conferma) {
+        if (salvaDati(nuove)) {
+          chiudiModulo();
+          alert(
+            "Backup importato correttamente!"
+          );
+        }
+      }
+
+    } catch (errore) {
+      alert(
+        "Importazione non riuscita: " +
+        errore.message
+      );
+
+    } finally {
+      $("fileBackup").value = "";
+    }
+  }
+);
+
+// ===============================
+// AVVIO DI MAGNETLY
+// ===============================
+
+function aggiornaApp() {
+  const conteggi = calcolaCollezione();
+
+  renderStatistiche(conteggi);
+  renderCalamite();
+  renderBarre(conteggi);
+  renderContinenti(conteggi);
+}
+
+// Popolamento suggerimenti paese.
+TUTTI_PAESI.forEach(paese => {
+  const opzione =
+    document.createElement("option");
+
+  opzione.value = paese.nome;
+
+  $("listaPaesiInput").appendChild(
+    opzione
+  );
+});
+
+aggiornaApp();
+
+</script>
+</body>
+</html>
