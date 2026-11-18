@@ -4,859 +4,680 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#156f6a">
+<meta name="apple-mobile-web-app-capable" content="yes">
 <title>Magnetly 🧲</title>
 
 <style>
 :root {
-  --verde: #156f6a;
-  --bg: #eef5f3;
-  --bordo: #dbe9e4;
-  --testo: #243634;
-  --soft: #647773;
+  --verde:#156f6a;
+  --bg:#eef5f3;
+  --bordo:#dbe9e4;
+  --testo:#243634;
+  --soft:#647773;
 }
 
-* { box-sizing: border-box; }
+* { box-sizing:border-box; }
 
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
-  background: var(--bg);
-  color: var(--testo);
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,
+    "Segoe UI",sans-serif;
+  background:var(--bg);
+  color:var(--testo);
 }
 
 header {
-  background: var(--verde);
-  color: white;
-  text-align: center;
-  padding: 34px 20px;
-  border-radius: 0 0 28px 28px;
+  background:var(--verde);
+  color:#fff;
+  text-align:center;
+  padding:34px 20px;
+  border-radius:0 0 28px 28px;
 }
-
-header h1 {
-  font-size: 48px;
-  margin: 0;
-}
-
-header p { margin-bottom: 0; }
+header h1 { font-size:48px; margin:0; }
+header p { margin-bottom:0; }
 
 main {
-  max-width: 1180px;
-  margin: 28px auto;
-  padding: 0 16px 40px;
+  max-width:1180px;
+  margin:28px auto;
+  padding:0 16px 40px;
 }
 
 .card {
-  background: white;
-  border-radius: 24px;
-  padding: 24px;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 16px #0000000b;
+  background:#fff;
+  border-radius:24px;
+  padding:24px;
+  margin-bottom:20px;
+  box-shadow:0 4px 16px #0000000b;
 }
 
 .stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
 }
 
 .stat-box {
-  background: white;
-  border-radius: 20px;
-  padding: 22px;
-  text-align: center;
+  background:#fff;
+  border-radius:20px;
+  padding:22px;
+  text-align:center;
 }
-
 .stat-number {
-  font-size: 36px;
-  font-weight: 800;
-  color: var(--verde);
+  font-size:36px;
+  font-weight:800;
+  color:var(--verde);
 }
-
-.stat-label {
-  margin-top: 8px;
-}
+.stat-label { margin-top:8px; }
 
 .centro {
-  text-align: center;
-  margin: 18px 0;
+  text-align:center;
+  margin:18px 0;
 }
 
 button {
-  border: 0;
-  border-radius: 12px;
-  padding: 12px 18px;
-  font: inherit;
-  cursor: pointer;
-  background: var(--verde);
-  color: white;
+  border:0;
+  border-radius:12px;
+  padding:12px 18px;
+  font:inherit;
+  cursor:pointer;
+  background:var(--verde);
+  color:#fff;
 }
-
 button:disabled {
-  opacity: .5;
-  cursor: default;
+  opacity:.55;
+  cursor:default;
 }
-
 .secondary {
-  background: #e4eeeb;
-  color: var(--verde);
+  background:#e4eeeb;
+  color:var(--verde);
 }
-
 .danger {
-  background: #fbe9e9;
-  color: #ad3030;
+  background:#fbe9e9;
+  color:#ad3030;
 }
-
 .primary {
-  padding: 15px 28px;
-  font-weight: 700;
+  padding:15px 28px;
+  font-weight:700;
 }
 
 .descrizione {
-  color: var(--soft);
-  font-size: 14px;
-  line-height: 1.6;
+  color:var(--soft);
+  font-size:14px;
+  line-height:1.6;
 }
 
-#moduloCard {
-  display: none;
-}
+#moduloCard { display:none; }
 
 label {
-  display: block;
-  font-weight: 650;
-  margin: 14px 0 6px;
+  display:block;
+  font-weight:650;
+  margin:14px 0 6px;
 }
 
-input, select, textarea {
-  width: 100%;
-  border: 1px solid #cfe0da;
-  border-radius: 12px;
-  padding: 13px;
-  font: inherit;
-  background: white;
-  color: var(--testo);
+input,select,textarea {
+  width:100%;
+  border:1px solid #cfe0da;
+  border-radius:12px;
+  padding:13px;
+  font:inherit;
+  background:#fff;
+  color:var(--testo);
 }
 
 .riga {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
 }
-
 .actions {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-top: 16px;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:16px;
 }
-
 .preview {
-  display: none;
-  width: 220px;
-  max-height: 220px;
-  object-fit: contain;
-  border-radius: 12px;
-  margin-top: 14px;
+  display:none;
+  width:220px;
+  max-height:220px;
+  object-fit:contain;
+  border-radius:12px;
+  margin-top:14px;
 }
 
-/* MENU PAESI CON BANDIERE */
+/* MENU PAESI */
 
-.country-picker {
-  position: relative;
-}
-
+.country-picker { position:relative; }
 .country-field {
-  display: flex;
-  position: relative;
-  align-items: center;
+  display:flex;
+  position:relative;
+  align-items:center;
 }
-
 .country-field input {
-  padding-left: 48px;
-  padding-right: 48px;
+  padding-left:48px;
+  padding-right:48px;
 }
-
 .country-flag {
-  position: absolute;
-  left: 13px;
-  font-size: 23px;
-  pointer-events: none;
+  position:absolute;
+  left:13px;
+  font-size:23px;
+  pointer-events:none;
 }
-
 .country-arrow {
-  position: absolute;
-  right: 5px;
-  background: transparent;
-  color: var(--verde);
-  padding: 8px 12px;
+  position:absolute;
+  right:5px;
+  background:transparent;
+  color:var(--verde);
+  padding:8px 12px;
 }
-
 .country-options {
-  position: absolute;
-  top: calc(100% + 5px);
-  left: 0;
-  right: 0;
-  z-index: 100;
-  max-height: 280px;
-  overflow-y: auto;
-  background: white;
-  border: 1px solid var(--bordo);
-  border-radius: 14px;
-  padding: 5px;
-  box-shadow: 0 12px 30px #0002;
-  display: none;
+  position:absolute;
+  top:calc(100% + 5px);
+  left:0;
+  right:0;
+  z-index:100;
+  max-height:280px;
+  overflow-y:auto;
+  background:#fff;
+  border:1px solid var(--bordo);
+  border-radius:14px;
+  padding:5px;
+  box-shadow:0 12px 30px #0002;
+  display:none;
 }
-
-.country-options.open {
-  display: block;
-}
-
+.country-options.open { display:block; }
 .country-option {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  text-align: left;
-  background: white;
-  color: var(--testo);
-  padding: 11px;
-  border-radius: 9px;
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  text-align:left;
+  background:#fff;
+  color:var(--testo);
+  padding:11px;
+  border-radius:9px;
 }
-
 .country-option:hover,
 .country-option.selected {
-  background: #e8f3ef;
+  background:#e8f3ef;
 }
-
 .country-option span:first-child {
-  font-size: 25px;
+  font-size:25px;
 }
-
 .country-help {
-  color: var(--soft);
-  font-size: 12px;
-  margin-top: 6px;
+  color:var(--soft);
+  font-size:12px;
+  margin-top:6px;
 }
 
 /* COLLEZIONE */
 
 .collection-top {
-  display: grid;
-  grid-template-columns: 300px 1fr;
-  gap: 24px;
-  margin: 24px 0;
-  align-items: center;
+  display:grid;
+  grid-template-columns:300px 1fr;
+  gap:24px;
+  margin:24px 0;
+  align-items:center;
 }
-
 .ring {
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  background: #dcece7;
-  display: grid;
-  place-items: center;
-  position: relative;
+  width:180px;
+  height:180px;
+  border-radius:50%;
+  background:#dcece7;
+  display:grid;
+  place-items:center;
+  position:relative;
 }
-
 .ring:before {
-  content: "";
-  position: absolute;
-  width: 135px;
-  height: 135px;
-  background: white;
-  border-radius: 50%;
+  content:"";
+  position:absolute;
+  width:135px;
+  height:135px;
+  background:#fff;
+  border-radius:50%;
 }
-
 .ring-text {
-  position: relative;
-  text-align: center;
+  position:relative;
+  text-align:center;
 }
-
 .ring-text strong {
-  display: block;
-  font-size: 30px;
+  display:block;
+  font-size:30px;
 }
-
 .riepilogo {
-  display: grid;
-  gap: 12px;
-  margin-top: 18px;
+  display:grid;
+  gap:12px;
+  margin-top:18px;
 }
-
 .bar-row {
-  display: grid;
-  grid-template-columns: 90px 1fr 65px;
-  gap: 12px;
-  align-items: center;
-  margin: 14px 0;
+  display:grid;
+  grid-template-columns:90px 1fr 65px;
+  gap:12px;
+  align-items:center;
+  margin:14px 0;
 }
-
 .bar {
-  height: 14px;
-  background: #dce9e5;
-  border-radius: 30px;
-  overflow: hidden;
+  height:14px;
+  background:#dce9e5;
+  border-radius:30px;
+  overflow:hidden;
+}
+.bar-fill {
+  height:100%;
+  background:var(--verde);
 }
 
-.bar-fill {
-  height: 100%;
-  background: var(--verde);
-}
+/* CONTINENTI */
 
 details.continent {
-  border: 1px solid var(--bordo);
-  border-radius: 18px;
-  margin-top: 12px;
-  overflow: hidden;
+  border:1px solid var(--bordo);
+  border-radius:18px;
+  margin-top:12px;
+  overflow:hidden;
 }
-
 details.continent summary {
-  cursor: pointer;
-  padding: 18px;
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  grid-template-rows: auto auto;
-  gap: 10px 12px;
-  align-items: center;
-  font-weight: 750;
-  list-style: none;
+  cursor:pointer;
+  padding:18px;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  grid-template-rows:auto auto;
+  gap:10px 12px;
+  align-items:center;
+  font-weight:750;
+  list-style:none;
 }
-
 details.continent summary::-webkit-details-marker {
-  display: none;
+  display:none;
 }
-
 .continent-name {
-  grid-column: 1;
-  grid-row: 1;
-  font-size: 19px;
+  grid-column:1;
+  grid-row:1;
+  font-size:19px;
 }
-
 .continent-score {
-  grid-column: 2;
-  grid-row: 1;
-  text-align: right;
-  white-space: nowrap;
+  grid-column:2;
+  grid-row:1;
+  text-align:right;
+  white-space:nowrap;
 }
-
 .pill {
-  color: var(--verde);
-  background: #e1efeb;
-  border-radius: 30px;
-  padding: 7px 14px;
+  color:var(--verde);
+  background:#e1efeb;
+  border-radius:30px;
+  padding:7px 14px;
 }
-
 details.continent summary .pill {
-  grid-column: 1;
-  grid-row: 2;
-  justify-self: start;
+  grid-column:1;
+  grid-row:2;
+  justify-self:start;
 }
-
-.continent-content {
-  padding: 0 18px 18px;
-}
-
+.continent-content { padding:0 18px 18px; }
 .two-columns {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
 }
-
 .country-list {
-  padding: 18px;
-  border-radius: 16px;
-  background: #f7faf9;
+  padding:18px;
+  border-radius:16px;
+  background:#f7faf9;
 }
-
-.country-list.owned {
-  background: #eef8f5;
-}
-
-.country-list h4 {
-  margin: 0 0 12px;
-}
-
+.country-list.owned { background:#eef8f5; }
+.country-list h4 { margin:0 0 12px; }
 .country-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 10px 0;
-  border-bottom: 1px solid var(--bordo);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  padding:10px 0;
+  border-bottom:1px solid var(--bordo);
 }
-
-.country-row:last-child {
-  border: 0;
-}
-
+.country-row:last-child { border:0; }
 .tag {
-  background: #d2ece4;
-  color: var(--verde);
-  font-size: 12px;
-  padding: 6px 10px;
-  border-radius: 20px;
-  white-space: nowrap;
+  background:#d2ece4;
+  color:var(--verde);
+  font-size:12px;
+  padding:6px 10px;
+  border-radius:20px;
+  white-space:nowrap;
 }
 
 /* MAGNETDEX */
 
 .dex-heading {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
 }
-
-.dex-heading h2 {
-  margin: 0;
-}
+.dex-heading h2 { margin:0; }
 
 .dex-controls {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  align-items: center;
-  margin: 18px 0;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  align-items:center;
+  margin:18px 0;
 }
-
 .dex-switch {
-  display: flex;
-  gap: 3px;
-  padding: 4px;
-  background: #e8f1ee;
-  border-radius: 13px;
+  display:flex;
+  gap:3px;
+  padding:4px;
+  background:#e8f1ee;
+  border-radius:13px;
 }
-
 .dex-switch button {
-  background: transparent;
-  color: var(--verde);
-  padding: 10px 13px;
-  font-size: 14px;
-  font-weight: 650;
+  background:transparent;
+  color:var(--verde);
+  padding:10px 13px;
+  font-size:14px;
+  font-weight:650;
 }
-
 .dex-switch button.active {
-  background: var(--verde);
-  color: white;
+  background:var(--verde);
+  color:#fff;
 }
-
 #filtroDex {
-  flex: 1;
-  width: auto;
-  min-width: 145px;
-  max-width: 280px;
+  flex:1;
+  width:auto;
+  min-width:145px;
+  max-width:280px;
 }
-
 .dex-grid {
-  display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 11px;
+  display:grid;
+  grid-template-columns:repeat(6,minmax(0,1fr));
+  gap:11px;
 }
-
 .dex-tile {
-  border: 1px solid #d7e9e2;
-  background: #f1f8f5;
-  border-radius: 16px;
-  min-width: 0;
-  min-height: 110px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-  padding: 12px 4px;
-  color: var(--testo);
+  border:1px solid #d7e9e2;
+  background:#f1f8f5;
+  border-radius:16px;
+  min-width:0;
+  min-height:110px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:5px;
+  padding:12px 4px;
+  color:var(--testo);
 }
-
 .dex-flag {
-  font-size: 39px;
-  line-height: 1.2;
+  font-size:39px;
+  line-height:1.2;
 }
-
 .dex-count {
-  font-size: 13px;
-  color: var(--verde);
-  font-weight: 750;
+  font-size:13px;
+  color:var(--verde);
+  font-weight:750;
 }
-
 .dex-name {
-  font-size: 11px;
-  line-height: 1.2;
-  text-align: center;
-  overflow-wrap: anywhere;
+  font-size:11px;
+  line-height:1.2;
+  text-align:center;
+  overflow-wrap:anywhere;
 }
-
 .dex-tile.locked {
-  background: #f3f5f4;
-  opacity: .5;
-  cursor: default;
+  background:#f3f5f4;
+  opacity:.5;
+  cursor:default;
 }
-
 .dex-tile.locked .dex-flag {
-  filter: grayscale(1);
+  filter:grayscale(1);
 }
 
-/* =====================================
-   NUOVE CARTE DELLE CALAMITE
-   ===================================== */
+/* CARTE CALAMITE */
 
 .magnets-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 20px;
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:20px;
 }
-
-/* Bordo più evidente e ombra */
-
 .magnet-card {
-  padding: 0;
-
-  border: 2px solid #8ebcb0;
-
-  border-radius: 19px;
-
-  background: #ffffff;
-
-  overflow: hidden;
-
-  text-align: left;
-  color: var(--testo);
-
-  display: flex;
-  flex-direction: column;
-
-  min-width: 0;
-
+  padding:0;
+  border:2px solid #8ebcb0;
+  border-radius:19px;
+  background:#fff;
+  overflow:hidden;
+  text-align:left;
+  color:var(--testo);
+  display:flex;
+  flex-direction:column;
+  min-width:0;
   box-shadow:
     0 3px 0 #cce2db,
     0 7px 16px #156f6a15;
-
   transition:
-    transform .2s ease,
-    box-shadow .2s ease,
-    border-color .2s ease;
+    transform .2s,
+    box-shadow .2s,
+    border-color .2s;
 }
-
 .magnet-card:hover {
-  transform: translateY(-4px);
-
-  border-color: var(--verde);
-
+  transform:translateY(-4px);
+  border-color:var(--verde);
   box-shadow:
     0 5px 0 #b0d3c8,
     0 12px 24px #156f6a25;
 }
-
 .magnet-card:active {
-  transform: scale(.98);
+  transform:scale(.98);
 }
-
-/* Fotografia della carta */
-
 .magnet-photo {
-  height: 190px;
-  width: 100%;
-  object-fit: cover;
-  background: #eaf3f0;
-  border-bottom: 1px solid #d5e7e0;
+  height:190px;
+  width:100%;
+  object-fit:cover;
+  background:#eaf3f0;
+  border-bottom:1px solid #d5e7e0;
 }
-
 .magnet-placeholder {
-  height: 190px;
-
-  display: grid;
-  place-items: center;
-
-  font-size: 48px;
-
-  background: #eaf3f0;
-  border-bottom: 1px solid #d5e7e0;
+  height:190px;
+  display:grid;
+  place-items:center;
+  font-size:48px;
+  background:#eaf3f0;
+  border-bottom:1px solid #d5e7e0;
 }
-
-/* Testi delle carte */
-
 .magnet-card-body {
-  padding: 15px;
-
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-
-  flex: 1;
+  padding:15px;
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+  flex:1;
 }
-
 .magnet-title {
-  color: var(--verde);
-  font-weight: 800;
-  font-size: 20px;
-  line-height: 1.2;
-  overflow-wrap: anywhere;
+  color:var(--verde);
+  font-weight:800;
+  font-size:20px;
+  line-height:1.2;
+  overflow-wrap:anywhere;
 }
-
 .magnet-sub {
-  color: #536e67;
-  font-size: 13px;
-  line-height: 1.45;
-  overflow-wrap: anywhere;
+  color:#536e67;
+  font-size:13px;
+  line-height:1.45;
+  overflow-wrap:anywhere;
 }
-
-/* Nome di chi ha regalato la calamita */
-
 .magnet-gift {
-  display: flex;
-  align-items: flex-start;
-  gap: 6px;
-
-  color: #355c52;
-  font-size: 13px;
-  font-weight: 650;
-
-  line-height: 1.4;
-  overflow-wrap: anywhere;
-
-  margin-top: 3px;
-  padding-top: 8px;
-
-  border-top: 1px solid #e0ece8;
+  color:#355c52;
+  font-size:13px;
+  font-weight:650;
+  line-height:1.4;
+  overflow-wrap:anywhere;
+  margin-top:3px;
+  padding-top:8px;
+  border-top:1px solid #e0ece8;
 }
-
-/* Titolo della sezione */
-
 .section-title {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
 }
-
-.section-title h2 {
-  margin: 0 0 12px;
-}
+.section-title h2 { margin:0 0 12px; }
 
 /* FINESTRE DETTAGLI */
 
 .overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 2000;
-  background: #101e1bb3;
-  padding: 16px;
-  align-items: center;
-  justify-content: center;
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:2000;
+  background:#101e1bb3;
+  padding:16px;
+  align-items:center;
+  justify-content:center;
 }
-
-.overlay.open {
-  display: flex;
-}
-
+.overlay.open { display:flex; }
 .dialog {
-  background: white;
-  border-radius: 22px;
-  width: min(660px, 100%);
-  max-height: 90dvh;
-  overflow: auto;
-  padding: 22px;
-  box-shadow: 0 20px 65px #0004;
+  background:#fff;
+  border-radius:22px;
+  width:min(660px,100%);
+  max-height:90dvh;
+  overflow:auto;
+  padding:22px;
+  box-shadow:0 20px 65px #0004;
 }
-
 .dialog-top {
-  display: flex;
-  align-items: start;
-  justify-content: space-between;
-  gap: 10px;
+  display:flex;
+  align-items:start;
+  justify-content:space-between;
+  gap:10px;
 }
-
 .dialog-top h2 {
-  margin: 0;
-  color: var(--verde);
+  margin:0;
+  color:var(--verde);
 }
-
 .close {
-  background: #e7f0ec;
-  color: var(--verde);
-  padding: 8px 13px;
-  font-size: 20px;
+  background:#e7f0ec;
+  color:var(--verde);
+  padding:8px 13px;
+  font-size:20px;
 }
-
 .detail-main-photo {
-  display: block;
-  width: 100%;
-  max-height: 430px;
-  object-fit: contain;
-  background: #f8fbfa;
-  border-radius: 14px;
-  margin: 14px 0;
+  display:block;
+  width:100%;
+  max-height:430px;
+  object-fit:contain;
+  background:#f8fbfa;
+  border-radius:14px;
+  margin:14px 0;
 }
-
 .detail-placeholder {
-  display: grid;
-  place-items: center;
-  height: 180px;
-  background: #eef5f3;
-  border-radius: 14px;
-  font-size: 52px;
-  margin: 14px 0;
+  display:grid;
+  place-items:center;
+  height:180px;
+  background:#eef5f3;
+  border-radius:14px;
+  font-size:52px;
+  margin:14px 0;
 }
-
 .detail-row {
-  padding: 13px 0;
-  border-bottom: 1px solid var(--bordo);
-  display: grid;
-  grid-template-columns: 105px 1fr;
-  gap: 14px;
+  padding:13px 0;
+  border-bottom:1px solid var(--bordo);
+  display:grid;
+  grid-template-columns:105px 1fr;
+  gap:14px;
 }
-
 .detail-row img,
 .detail-row .detail-placeholder {
-  width: 105px;
-  height: 105px;
-  object-fit: cover;
-  margin: 0;
+  width:105px;
+  height:105px;
+  object-fit:cover;
+  margin:0;
 }
-
 .detail-row h3 {
-  margin: 0 0 6px;
-  color: var(--verde);
+  margin:0 0 6px;
+  color:var(--verde);
 }
-
 .detail-row p {
-  font-size: 14px;
-  margin: 5px 0;
-  overflow-wrap: anywhere;
+  font-size:14px;
+  margin:5px 0;
+  overflow-wrap:anywhere;
 }
-
 .detail-description {
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
 }
-
 .modal-actions {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-top: 17px;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:17px;
+}
+body.modal-open { overflow:hidden; }
+
+/* INDICATORE MEMORIA */
+
+.storage-note {
+  font-size:13px;
+  color:#536e67;
+  margin-top:12px;
+  line-height:1.5;
+}
+.storage-state {
+  font-weight:650;
+  color:var(--verde);
 }
 
-body.modal-open {
-  overflow: hidden;
-}
+/* TELEFONO */
 
-/* RESPONSIVE */
-
-@media (max-width: 850px) {
-
+@media(max-width:850px) {
   .collection-top,
   .two-columns {
-    grid-template-columns: 1fr;
+    grid-template-columns:1fr;
   }
-
   .magnets-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns:repeat(2,minmax(0,1fr));
   }
 }
-
-@media (max-width: 700px) {
-
+@media(max-width:700px) {
   .dex-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 8px;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:8px;
   }
-
-  .dex-flag {
-    font-size: 35px;
-  }
-
-  .dex-tile {
-    min-height: 98px;
-  }
-
-  .dex-name {
-    font-size: 10px;
-  }
+  .dex-flag { font-size:35px; }
+  .dex-tile { min-height:98px; }
+  .dex-name { font-size:10px; }
 }
-
-@media (max-width: 550px) {
-
-  header h1 {
-    font-size: 36px;
-  }
-
-  .stats {
-    gap: 6px;
-  }
-
-  .stat-box {
-    padding: 12px 5px;
-  }
-
-  .stat-number {
-    font-size: 25px;
-  }
-
-  .stat-label {
-    font-size: 12px;
-  }
-
-  .card {
-    padding: 18px;
-  }
-
+@media(max-width:550px) {
+  header h1 { font-size:36px; }
+  .stats { gap:6px; }
+  .stat-box { padding:12px 5px; }
+  .stat-number { font-size:25px; }
+  .stat-label { font-size:12px; }
+  .card { padding:18px; }
   .riga,
   .bar-row {
-    grid-template-columns: 1fr;
+    grid-template-columns:1fr;
   }
-
-  .magnets-grid {
-    gap: 12px;
-  }
-
+  .magnets-grid { gap:12px; }
   .magnet-photo,
   .magnet-placeholder {
-    height: 140px;
+    height:140px;
   }
-
   .magnet-card-body {
-    padding: 11px;
-    gap: 6px;
+    padding:11px;
+    gap:6px;
   }
-
-  .magnet-title {
-    font-size: 17px;
-  }
-
+  .magnet-title { font-size:17px; }
   .magnet-sub,
-  .magnet-gift {
-    font-size: 12px;
-  }
-
-  .dialog {
-    padding: 16px;
-  }
-
+  .magnet-gift { font-size:12px; }
+  .dialog { padding:16px; }
   .detail-row {
-    grid-template-columns: 85px 1fr;
+    grid-template-columns:85px 1fr;
   }
-
   .detail-row img,
   .detail-row .detail-placeholder {
-    width: 85px;
-    height: 85px;
+    width:85px;
+    height:85px;
   }
 }
-
-@media (max-width: 350px) {
-
-  .dex-flag {
-    font-size: 29px;
-  }
-
+@media(max-width:350px) {
+  .dex-flag { font-size:29px; }
   .magnet-photo,
   .magnet-placeholder {
-    height: 115px;
+    height:115px;
   }
 }
 </style>
@@ -871,10 +692,7 @@ body.modal-open {
 
 <main>
 
-<!-- STATISTICHE INIZIALI -->
-
 <section class="stats">
-
   <div class="stat-box">
     <div class="stat-number">
       🧲 <span id="totaleCalamite">0</span>
@@ -890,96 +708,61 @@ body.modal-open {
   </div>
 
   <div class="stat-box">
-    <div id="percentualeMondo" class="stat-number">
-      0%
-    </div>
+    <div id="percentualeMondo" class="stat-number">0%</div>
     <div class="stat-label">Mondo completato</div>
     <small id="sottotitoloMondo"></small>
   </div>
-
 </section>
 
 <div class="centro">
-  <button id="apriModulo" class="primary">
+  <button id="apriModulo" class="primary" disabled>
     + Aggiungi calamita
   </button>
 </div>
 
-<!-- MODULO CALAMITA -->
+<!-- AGGIUNGI / MODIFICA -->
 
 <section id="moduloCard" class="card">
-
   <h2 id="titoloModulo">🧲 Nuova calamita</h2>
 
   <form id="formCalamita">
 
     <label for="nome">Nome della calamita *</label>
-
-    <input
-      id="nome"
-      required
-      placeholder="Es. Valencia"
-    >
-
-    <!-- MENU PAESI -->
+    <input id="nome" required placeholder="Es. Valencia">
 
     <label for="paese">Paese *</label>
-
     <div id="countryPicker" class="country-picker">
-
       <div class="country-field">
-
-        <span id="countryFlag" class="country-flag">
-          🌍
-        </span>
-
-        <input
-          id="paese"
-          required
-          autocomplete="off"
-          placeholder="Cerca o scegli un paese"
-          role="combobox"
-          aria-autocomplete="list"
-          aria-expanded="false"
-          aria-controls="countryOptions"
-        >
-
-        <button
-          type="button"
-          id="countryArrow"
-          class="country-arrow"
-          aria-label="Mostra tutti i paesi"
-        >
-          ▾
-        </button>
-
+        <span id="countryFlag" class="country-flag">🌍</span>
+        <input id="paese"
+               required
+               autocomplete="off"
+               placeholder="Cerca o scegli un paese"
+               role="combobox"
+               aria-autocomplete="list"
+               aria-expanded="false"
+               aria-controls="countryOptions">
+        <button type="button"
+                id="countryArrow"
+                class="country-arrow"
+                aria-label="Mostra tutti i paesi">▾</button>
       </div>
 
-      <div
-        id="countryOptions"
-        class="country-options"
-        role="listbox"
-      ></div>
-
+      <div id="countryOptions"
+           class="country-options"
+           role="listbox"></div>
     </div>
 
     <div class="country-help">
-      Tocca la freccia oppure scrivi
-      il nome del paese.
+      Tocca la freccia oppure scrivi il nome del paese.
     </div>
 
     <label for="citta">Città o località</label>
-
-    <input
-      id="citta"
-      placeholder="Es. Valencia"
-    >
+    <input id="citta" placeholder="Es. Valencia">
 
     <div class="riga">
-
       <div>
         <label for="mese">Mese</label>
-
         <select id="mese">
           <option value="">Non specificato</option>
           <option>Gennaio</option>
@@ -996,105 +779,68 @@ body.modal-open {
           <option>Dicembre</option>
         </select>
       </div>
-
       <div>
         <label for="anno">Anno</label>
-
-        <input
-          id="anno"
-          type="number"
-          min="1900"
-          max="2100"
-          placeholder="2026"
-        >
+        <input id="anno" type="number"
+               min="1900" max="2100"
+               placeholder="2026">
       </div>
-
     </div>
 
     <label for="provenienza">
       Chi l'ha comprata o regalata?
     </label>
-
-    <input
-      id="provenienza"
-      placeholder="Es. Ale e Auri"
-    >
+    <input id="provenienza" placeholder="Es. Ale e Auri">
 
     <label for="foto">Fotografia</label>
+    <input id="foto" type="file" accept="image/*">
 
-    <input
-      id="foto"
-      type="file"
-      accept="image/*"
-    >
-
-    <img
-      id="anteprima"
-      class="preview"
-      alt="Anteprima fotografia"
-    >
+    <img id="anteprima" class="preview"
+         alt="Anteprima fotografia">
 
     <div class="actions">
-
-      <button
-        id="rimuoviFoto"
-        type="button"
-        class="danger"
-        style="display:none"
-      >
+      <button id="rimuoviFoto"
+              type="button"
+              class="danger"
+              style="display:none">
         Rimuovi fotografia
       </button>
-
     </div>
 
     <p class="descrizione">
-      Quando modifichi una calamita,
-      la fotografia attuale rimane se
-      non ne scegli un'altra.
+      Se modifichi una calamita senza scegliere una
+      nuova foto, quella attuale rimane.
     </p>
 
     <label for="note">Note e ricordi</label>
-
     <textarea id="note" rows="3"></textarea>
 
     <div class="actions">
-
-      <button
-        id="salvaCalamita"
-        type="submit"
-        class="primary"
-      >
+      <button id="salvaCalamita"
+              type="submit"
+              class="primary">
         Salva calamita
       </button>
 
-      <button
-        type="button"
-        id="annulla"
-        class="secondary"
-      >
+      <button id="annulla"
+              type="button"
+              class="secondary">
         Annulla
       </button>
-
     </div>
-
   </form>
-
 </section>
 
 <!-- LA MIA COLLEZIONE -->
 
 <section class="card">
-
   <h2>🌍 La mia collezione</h2>
-
   <p class="descrizione">
     Panoramica della collezione per continente
   </p>
 
   <div class="collection-top">
-
     <div>
-
       <div id="anelloMondo" class="ring">
         <div class="ring-text">
           <strong id="anelloPercentuale">0%</strong>
@@ -1103,78 +849,51 @@ body.modal-open {
       </div>
 
       <div class="riepilogo">
-
         <div>
           🌍 <strong id="riepilogoPaesi">0</strong>
           Paesi collezionati
         </div>
-
         <div>
           🧲 <strong id="riepilogoCalamite">0</strong>
           Calamite
         </div>
-
         <div>
           🚩 <strong id="riepilogoTotali">0</strong>
           Paesi totali
         </div>
-
       </div>
-
     </div>
 
     <div>
       <h3>Completamento per continente</h3>
       <div id="barreContinenti"></div>
     </div>
-
   </div>
 
   <div id="listaContinenti"></div>
-
 </section>
 
 <!-- MAGNETDEX -->
 
 <section class="card">
-
   <div class="dex-heading">
-
     <h2>🧲 Magnetdex</h2>
-
-    <span id="dexCount" class="pill">
-      0 sbloccati
-    </span>
-
+    <span id="dexCount" class="pill">0 sbloccati</span>
   </div>
 
   <p class="descrizione">
-    Tocca una bandiera per vedere
-    le calamite di quel paese.
+    Tocca una bandiera per vedere le calamite di quel paese.
   </p>
 
   <div class="dex-controls">
-
     <div class="dex-switch">
-
-      <button
-        id="dexUnlocked"
-        class="active"
-        type="button"
-      >
-        Sbloccati
-      </button>
-
-      <button id="dexAll" type="button">
-        Tutti i paesi
-      </button>
-
+      <button id="dexUnlocked" class="active"
+              type="button">Sbloccati</button>
+      <button id="dexAll"
+              type="button">Tutti i paesi</button>
     </div>
 
-    <select
-      id="filtroDex"
-      aria-label="Filtra continente"
-    >
+    <select id="filtroDex" aria-label="Filtra continente">
       <option value="">Tutti i continenti</option>
       <option>Europa</option>
       <option>Asia</option>
@@ -1182,72 +901,57 @@ body.modal-open {
       <option>Africa</option>
       <option>Oceania</option>
     </select>
-
   </div>
 
   <div id="dexGrid" class="dex-grid"></div>
-
 </section>
 
 <!-- LE MIE CALAMITE -->
 
 <section class="card">
-
   <div class="section-title">
-
     <h2>🧲 Le mie calamite</h2>
-
     <span class="descrizione">
       Ordinate per data ricevuta ↓
     </span>
-
   </div>
 
   <p class="descrizione">
-    Tocca una carta per vedere la fotografia
-    grande e tutti i dettagli.
+    Tocca una carta per vedere la fotografia grande
+    e tutti i dettagli.
   </p>
 
-  <div
-    id="listaCalamite"
-    class="magnets-grid"
-  ></div>
-
+  <div id="listaCalamite" class="magnets-grid"></div>
 </section>
 
 <!-- BACKUP -->
 
 <section class="card">
-
   <h2>💾 Backup della collezione</h2>
 
   <p class="descrizione">
-    Salva una copia delle tue calamite,
-    comprese le fotografie.
+    Esporta una copia delle tue calamite e delle fotografie.
+    Puoi conservarla su iCloud Drive.
   </p>
 
   <div class="actions">
-
-    <button id="esportaBackup">
+    <button id="esportaBackup" disabled>
       ⬇️ Esporta backup
     </button>
-
-    <button
-      id="importaBackup"
-      class="secondary"
-    >
+    <button id="importaBackup"
+            class="secondary" disabled>
       ⬆️ Importa backup
     </button>
-
   </div>
 
-  <input
-    id="fileBackup"
-    type="file"
-    accept=".json,application/json"
-    hidden
-  >
+  <input id="fileBackup"
+         type="file"
+         accept=".json,application/json"
+         hidden>
 
+  <p id="statoArchivio" class="storage-note">
+    Apertura archivio...
+  </p>
 </section>
 
 </main>
@@ -1255,166 +959,128 @@ body.modal-open {
 <!-- FINESTRA DETTAGLI -->
 
 <div id="overlay" class="overlay">
-
-  <section
-    class="dialog"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="modalTitle"
-  >
+  <section class="dialog"
+           role="dialog"
+           aria-modal="true"
+           aria-labelledby="modalTitle">
 
     <div class="dialog-top">
-
       <h2 id="modalTitle"></h2>
-
-      <button
-        id="closeModal"
-        class="close"
-        type="button"
-        aria-label="Chiudi"
-      >
-        ✕
-      </button>
-
+      <button id="closeModal"
+              class="close"
+              type="button"
+              aria-label="Chiudi">✕</button>
     </div>
 
     <div id="modalContent"></div>
-
-    <div
-      id="modalActions"
-      class="modal-actions"
-    ></div>
-
+    <div id="modalActions" class="modal-actions"></div>
   </section>
-
 </div>
 
 <script>
+"use strict";
 
-// ====================================
+// ===================================
 // CATALOGO PAESI
-// ====================================
+// ===================================
 
 const GRUPPI = [
   {
-    nome: "Europa",
-    codici: `
-      AL AD AM AT AZ BY BE BA BG HR CY CZ DK
-      EE FI FR GE DE GR HU IS IE IT XK LV LI
-      LT LU MT MD MC ME NL MK NO PL PT RO RU
-      SM RS SK SI ES SE CH TR UA GB VA
-    `
+    nome:"Europa",
+    codici:`AL AD AM AT AZ BY BE BA BG HR CY CZ DK
+    EE FI FR GE DE GR HU IS IE IT XK LV LI LT LU MT
+    MD MC ME NL MK NO PL PT RO RU SM RS SK SI ES
+    SE CH TR UA GB VA`
   },
   {
-    nome: "Asia",
-    codici: `
-      AF BH BD BT BN KH CN KP KR AE PH JP
-      JO IN ID IR IQ IL KW LA LB MY MV MN
-      MM NP OM PK PS QA SA SG LK SY TJ TH
-      TL TM UZ VN YE TW KG KZ HK MO
-    `
+    nome:"Asia",
+    codici:`AF BH BD BT BN KH CN KP KR AE PH JP JO
+    IN ID IR IQ IL KW LA LB MY MV MN MM NP OM PK
+    PS QA SA SG LK SY TJ TH TL TM UZ VN YE TW
+    KG KZ HK MO`
   },
   {
-    nome: "America",
-    codici: `
-      AG AR BS BB BZ BO BR CA CL CO CR CU
-      DM DO EC SV GD GT GY HT HN JM MX NI
-      PA PY PE KN LC VC SR TT US UY VE
-    `
+    nome:"America",
+    codici:`AG AR BS BB BZ BO BR CA CL CO CR CU DM
+    DO EC SV GD GT GY HT HN JM MX NI PA PY PE KN
+    LC VC SR TT US UY VE`
   },
   {
-    nome: "Africa",
-    codici: `
-      DZ AO BJ BW BF BI CV CM TD KM CG CD
-      CI DJ EG ER SZ ET GA GM GH GN GW GQ
-      KE LS LR LY MG MW ML MA MR MU MZ NA
-      NE NG CF RW ST SN SC SL SO ZA SS SD
-      TZ TG TN UG ZM ZW
-    `
+    nome:"Africa",
+    codici:`DZ AO BJ BW BF BI CV CM TD KM CG CD CI
+    DJ EG ER SZ ET GA GM GH GN GW GQ KE LS LR LY
+    MG MW ML MA MR MU MZ NA NE NG CF RW ST SN SC
+    SL SO ZA SS SD TZ TG TN UG ZM ZW`
   },
   {
-    nome: "Oceania",
-    codici: `
-      AU FJ KI MH FM NR NZ PW PG WS SB TO
-      TV VU
-    `
+    nome:"Oceania",
+    codici:`AU FJ KI MH FM NR NZ PW PG WS SB TO TV VU`
   }
 ];
 
 const SPECIALI = {
-  XK: "Kosovo",
-  CZ: "Cechia",
-  GB: "Regno Unito",
-  NL: "Paesi Bassi",
-  VA: "Città del Vaticano",
-  TR: "Turchia",
-  MK: "Macedonia del Nord",
-  KR: "Corea del Sud",
-  KP: "Corea del Nord"
+  XK:"Kosovo",
+  CZ:"Cechia",
+  GB:"Regno Unito",
+  NL:"Paesi Bassi",
+  VA:"Città del Vaticano",
+  TR:"Turchia",
+  MK:"Macedonia del Nord",
+  KR:"Corea del Sud",
+  KP:"Corea del Nord"
 };
 
-const displayNames = new Intl.DisplayNames(
-  ["it"],
-  { type: "region" }
-);
+const displayNames =
+  new Intl.DisplayNames(["it"], {type:"region"});
 
 const CONTINENTI = GRUPPI.map(g => ({
-  nome: g.nome,
-  paesi: g.codici
-    .trim()
-    .split(/\s+/)
+  nome:g.nome,
+  paesi:g.codici.trim().split(/\s+/)
     .map(codice => ({
       codice,
-      nome: SPECIALI[codice] ||
-        displayNames.of(codice)
+      nome:SPECIALI[codice] || displayNames.of(codice)
     }))
-    .sort((a, b) =>
-      a.nome.localeCompare(b.nome, "it")
-    )
+    .sort((a,b) => a.nome.localeCompare(b.nome,"it"))
 }));
 
 const TUTTI_PAESI =
   CONTINENTI.flatMap(c => c.paesi);
 
 const ALIAS = {
-  "spagna": "ES",
-  "germania": "DE",
-  "italia": "IT",
-  "francia": "FR",
-  "inghilterra": "GB",
-  "gran bretagna": "GB",
-  "regno unito": "GB",
-  "usa": "US",
-  "america": "US",
-  "stati uniti d'america": "US",
-  "olanda": "NL",
-  "paesi bassi": "NL",
-  "repubblica ceca": "CZ",
-  "cechia": "CZ",
-  "vaticano": "VA",
-  "citta del vaticano": "VA",
-  "turchia": "TR",
-  "kosovo": "XK",
-  "corea del sud": "KR",
-  "corea del nord": "KP"
+  "spagna":"ES",
+  "germania":"DE",
+  "italia":"IT",
+  "francia":"FR",
+  "inghilterra":"GB",
+  "gran bretagna":"GB",
+  "regno unito":"GB",
+  "usa":"US",
+  "america":"US",
+  "stati uniti d'america":"US",
+  "olanda":"NL",
+  "paesi bassi":"NL",
+  "repubblica ceca":"CZ",
+  "cechia":"CZ",
+  "vaticano":"VA",
+  "citta del vaticano":"VA",
+  "turchia":"TR",
+  "kosovo":"XK",
+  "corea del sud":"KR",
+  "corea del nord":"KP"
 };
 
-const $ = id =>
-  document.getElementById(id);
+const $ = id => document.getElementById(id);
 
-const norm = s =>
-  String(s || "")
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .trim()
-    .toLowerCase()
-    .replace(/\s+/g, " ");
+const norm = s => String(s || "")
+  .normalize("NFD")
+  .replace(/[\u0300-\u036f]/g,"")
+  .trim()
+  .toLowerCase()
+  .replace(/\s+/g," ");
 
 function codicePaese(s) {
-
   const v = norm(s);
-
-  if (ALIAS[v]) return ALIAS[v];
+  if(ALIAS[v]) return ALIAS[v];
 
   const p = TUTTI_PAESI.find(p =>
     norm(p.nome) === v ||
@@ -1425,101 +1091,105 @@ function codicePaese(s) {
   return p ? p.codice : "";
 }
 
-function nomePaese(codice) {
-
+function nomePaese(c) {
   return TUTTI_PAESI.find(
-    p => p.codice === codice
+    p => p.codice === c
   )?.nome || "";
-
 }
 
 function bandiera(c) {
-
   return c && c.length === 2
-    ? [...c.toUpperCase()].map(x =>
-        String.fromCodePoint(
+    ? [...c.toUpperCase()]
+        .map(x => String.fromCodePoint(
           127397 + x.charCodeAt(0)
-        )
-      ).join("")
+        )).join("")
     : "🏳️";
-
 }
 
-const percent = (a, b) =>
-  b ? a / b * 100 : 0;
+const percent = (a,b) => b ? a/b*100 : 0;
 
 const formatPercent = x =>
   x.toLocaleString("it-IT", {
-    minimumFractionDigits: 1,
-    maximumFractionDigits: 1
+    minimumFractionDigits:1,
+    maximumFractionDigits:1
   }) + "%";
 
 const MESI = [
-  "Gennaio",
-  "Febbraio",
-  "Marzo",
-  "Aprile",
-  "Maggio",
-  "Giugno",
-  "Luglio",
-  "Agosto",
-  "Settembre",
-  "Ottobre",
-  "Novembre",
-  "Dicembre"
+  "Gennaio","Febbraio","Marzo","Aprile",
+  "Maggio","Giugno","Luglio","Agosto",
+  "Settembre","Ottobre","Novembre","Dicembre"
 ];
 
-// ====================================
-// ARCHIVIO CALAMITE
-// ====================================
+function testo(tag,contenuto,classe="") {
+  const e = document.createElement(tag);
+  e.textContent = contenuto;
+  if(classe) e.className = classe;
+  return e;
+}
 
-const CHIAVE = "calamite";
+function info(parent,tag,value,classe="") {
+  parent.appendChild(testo(tag,value,classe));
+}
 
+// ===================================
+// NUOVO ARCHIVIO INDEXEDDB
+// ===================================
+
+// Una calamita per record.
+// La fotografia viene salvata come Blob,
+// cioè come immagine, non come testo Base64.
+
+const DB_NAME = "MagnetlyDB";
+const DB_VERSION = 1;
+const STORE = "calamite";
+const META = "impostazioni";
+
+// Vecchio archivio da cui migrare.
+// Non viene cancellato.
+const OLD_KEY = "calamite";
+
+let db = null;
 let calamite = [];
 let idInModifica = null;
-let fotoCorrente = "";
-
+let fotoCorrente = null;
 let elaborazioneFoto = false;
 let versioneFoto = 0;
+let busy = false;
 
-function normalizzaCalamita(d, i) {
+// Indirizzi temporanei per mostrare le foto.
+let renderURLs = [];
+let anteprimaURL = null;
 
-  if (typeof d === "string") {
-    d = { nome: d };
+function randomId() {
+  return typeof crypto.randomUUID === "function"
+    ? crypto.randomUUID()
+    : String(Date.now()) + "-" +
+      Math.random().toString(36).slice(2);
+}
+
+function normalizzaCalamita(d,i) {
+  if(typeof d === "string") {
+    d = {nome:d};
   }
 
-  if (!d ||
-      typeof d !== "object" ||
-      Array.isArray(d)) {
-
+  if(!d || typeof d !== "object" ||
+     Array.isArray(d)) {
     throw Error("Calamita non valida");
-
   }
 
   const c = {
-    id: typeof d.id === "string" && d.id
+    id:typeof d.id === "string" && d.id
       ? d.id
       : "vecchia-" + i
   };
 
-  for (const k of [
-    "nome",
-    "paese",
-    "citta",
-    "mese",
-    "anno",
-    "provenienza",
-    "note",
-    "foto"
+  for(const k of [
+    "nome","paese","citta","mese",
+    "anno","provenienza","note"
   ]) {
-
-    if (
-      d[k] != null &&
-      !["string", "number"].includes(
-        typeof d[k]
-      )
-    ) {
-      throw Error("Campo non valido");
+    if(d[k] != null &&
+       !["string","number"].includes(typeof d[k])) {
+      throw Error("Campo non valido: " + k);
     }
 
     c[k] = String(d[k] ?? "");
@@ -1528,77 +1198,344 @@ function normalizzaCalamita(d, i) {
   return c;
 }
 
-try {
+function apriDatabase() {
+  return new Promise((resolve,reject) => {
+    if(!("indexedDB" in window)) {
+      reject(Error("IndexedDB non disponibile"));
+      return;
+    }
 
-  const d = JSON.parse(
-    localStorage.getItem(CHIAVE)
-  );
+    const req = indexedDB.open(DB_NAME,DB_VERSION);
 
-  if (Array.isArray(d)) {
-    calamite = d.map(normalizzaCalamita);
-  }
+    req.onupgradeneeded = () => {
+      const d = req.result;
 
-} catch (e) {
+      if(!d.objectStoreNames.contains(STORE)) {
+        d.createObjectStore(STORE, {keyPath:"id"});
+      }
 
-  alert(
-    "Impossibile leggere le calamite salvate."
-  );
+      if(!d.objectStoreNames.contains(META)) {
+        d.createObjectStore(META, {keyPath:"chiave"});
+      }
+    };
 
+    req.onsuccess = () => resolve(req.result);
+
+    req.onerror = () =>
+      reject(req.error || Error("Apertura fallita"));
+
+    req.onblocked = () =>
+      reject(Error(
+        "Chiudi le altre finestre di Magnetly e riprova"
+      ));
+  });
 }
 
-function salvaDati(nuove) {
+function tutteCalamite() {
+  return new Promise((resolve,reject) => {
+    const t = db.transaction(STORE,"readonly");
+    const r = t.objectStore(STORE).getAll();
 
-  try {
+    r.onsuccess = () => resolve(r.result);
+    r.onerror = () => reject(r.error);
+  });
+}
 
-    localStorage.setItem(
-      CHIAVE,
-      JSON.stringify(nuove)
+function leggiMeta(chiave) {
+  return new Promise((resolve,reject) => {
+    const t = db.transaction(META,"readonly");
+    const r = t.objectStore(META).get(chiave);
+
+    r.onsuccess = () => resolve(r.result?.valore);
+    r.onerror = () => reject(r.error);
+  });
+}
+
+function scriviUnRecord(record) {
+  return new Promise((resolve,reject) => {
+    const t = db.transaction(STORE,"readwrite");
+    t.objectStore(STORE).put(record);
+
+    t.oncomplete = () => resolve();
+    t.onerror = () =>
+      reject(t.error || Error("Scrittura fallita"));
+    t.onabort = () =>
+      reject(t.error || Error("Scrittura annullata"));
+  });
+}
+
+function eliminaRecord(id) {
+  return new Promise((resolve,reject) => {
+    const t = db.transaction(STORE,"readwrite");
+    t.objectStore(STORE).delete(id);
+
+    t.oncomplete = () => resolve();
+    t.onerror = () =>
+      reject(t.error || Error("Eliminazione fallita"));
+    t.onabort = () =>
+      reject(t.error || Error("Eliminazione annullata"));
+  });
+}
+
+// Sostituzione atomica: se la transazione fallisce,
+// non viene salvata soltanto una parte dei dati.
+
+function sostituisciTutto(records) {
+  return new Promise((resolve,reject) => {
+    const t = db.transaction(
+      [STORE,META],
+      "readwrite"
     );
 
-    calamite = nuove;
+    const s = t.objectStore(STORE);
+    s.clear();
 
-    aggiornaApp();
+    for(const c of records) {
+      s.put(c);
+    }
 
-    return true;
+    t.objectStore(META).put({
+      chiave:"migrazioneCompletata",
+      valore:true
+    });
 
-  } catch (e) {
+    t.oncomplete = () => resolve();
 
-    alert(
-      "Salvataggio non riuscito. " +
-      "La memoria del browser potrebbe essere piena."
-    );
+    t.onerror = () =>
+      reject(t.error || Error("Importazione fallita"));
 
+    t.onabort = () =>
+      reject(t.error || Error("Importazione annullata"));
+  });
+}
+
+function segnalaMigrazioneCompletata() {
+  return new Promise((resolve,reject) => {
+    const t = db.transaction(META,"readwrite");
+
+    t.objectStore(META).put({
+      chiave:"migrazioneCompletata",
+      valore:true
+    });
+
+    t.oncomplete = () => resolve();
+
+    t.onerror = () =>
+      reject(t.error || Error("Errore archivio"));
+  });
+}
+
+// Convertiamo le vecchie fotografie Base64
+// in veri Blob immagine.
+
+function dataURLaBlob(data) {
+  if(!data) {
+    return Promise.resolve(null);
+  }
+
+  if(typeof data !== "string" ||
+     !data.startsWith("data:image/")) {
+    throw Error("Foto del vecchio archivio non valida");
+  }
+
+  return fetch(data).then(r => {
+    if(!r.ok) {
+      throw Error(
+        "Impossibile leggere una vecchia fotografia"
+      );
+    }
+    return r.blob();
+  });
+}
+
+// Serve per esportare backup compatibili
+// con quelli utilizzati fino ad oggi.
+
+function blobADataURL(blob) {
+  return new Promise((resolve,reject) => {
+    if(!blob) {
+      resolve("");
+      return;
+    }
+
+    const f = new FileReader();
+
+    f.onload = () => resolve(f.result);
+    f.onerror = () => reject(f.error);
+
+    f.readAsDataURL(blob);
+  });
+}
+
+async function datiDaBackup(dati) {
+  const records = [];
+
+  for(let i=0;i<dati.length;i++) {
+    const d = dati[i];
+    const c = normalizzaCalamita(d,i);
+
+    if(d.foto instanceof Blob) {
+      c.foto = d.foto;
+    } else if(typeof d.foto === "string" &&
+              d.foto) {
+      c.foto = await dataURLaBlob(d.foto);
+    } else if(d.foto == null || d.foto === "") {
+      c.foto = null;
+    } else {
+      throw Error("Fotografia non valida nel backup");
+    }
+
+    records.push(c);
+  }
+
+  const ids = records.map(x => x.id);
+
+  if(new Set(ids).size !== ids.length) {
+    throw Error("ID duplicati nel backup");
+  }
+
+  return records;
+}
+
+// MIGRAZIONE AUTOMATICA.
+// Il vecchio localStorage non viene cancellato.
+
+async function migraVecchiDati() {
+  const fatto = await leggiMeta("migrazioneCompletata");
+
+  if(fatto) return false;
+
+  const attuali = await tutteCalamite();
+
+  if(attuali.length) {
+    await segnalaMigrazioneCompletata();
     return false;
   }
-}
 
-function testo(tag, contenuto, classe = "") {
+  const vecchiRaw = localStorage.getItem(OLD_KEY);
 
-  const e = document.createElement(tag);
-
-  e.textContent = contenuto;
-
-  if (classe) {
-    e.className = classe;
+  if(!vecchiRaw) {
+    await segnalaMigrazioneCompletata();
+    return false;
   }
 
-  return e;
+  let dati;
+
+  try {
+    dati = JSON.parse(vecchiRaw);
+  } catch(e) {
+    throw Error(
+      "Il vecchio archivio non è leggibile: " +
+      "importa il backup JSON"
+    );
+  }
+
+  if(!Array.isArray(dati)) {
+    throw Error("Formato vecchio archivio non valido");
+  }
+
+  if(!dati.length) {
+    await segnalaMigrazioneCompletata();
+    return false;
+  }
+
+  const records = await datiDaBackup(dati);
+
+  await sostituisciTutto(records);
+
+  return true;
 }
 
-function info(parent, tag, value, classe = "") {
+// ===================================
+// VISUALIZZAZIONE IMMAGINI
+// ===================================
 
-  parent.appendChild(
-    testo(tag, value, classe)
+function rilasciaURLs() {
+  for(const url of renderURLs) {
+    URL.revokeObjectURL(url);
+  }
+  renderURLs = [];
+}
+
+function urlFoto(blob) {
+  if(!(blob instanceof Blob)) return "";
+
+  const u = URL.createObjectURL(blob);
+  renderURLs.push(u);
+  return u;
+}
+
+async function ricarica() {
+  calamite = await tutteCalamite();
+  rilasciaURLs();
+  aggiornaApp();
+  aggiornaStatoArchivio();
+}
+
+function aggiornaStatoArchivio() {
+  const bytes = calamite.reduce(
+    (n,c) => n +
+      (c.foto instanceof Blob ? c.foto.size : 0),
+    0
   );
 
+  const MB = (bytes / 1048576).toLocaleString(
+    "it-IT",
+    {maximumFractionDigits:1}
+  );
+
+  $("statoArchivio").textContent =
+    "✅ Archivio IndexedDB attivo · " +
+    calamite.length + " calamite · " +
+    "Fotografie: " + MB + " MB. " +
+    "I dati sono salvati sul dispositivo, " +
+    "non sincronizzati automaticamente.";
 }
 
-// ====================================
-// MENU PAESI CON BANDIERE
-// ====================================
+// ===================================
+// AVVIO ARCHIVIO
+// ===================================
+
+async function avviaArchivio() {
+  try {
+    db = await apriDatabase();
+
+    const migrato = await migraVecchiDati();
+
+    await ricarica();
+
+    $("apriModulo").disabled = false;
+    $("esportaBackup").disabled = false;
+    $("importaBackup").disabled = false;
+
+    if(migrato) {
+      alert(
+        "Le calamite del vecchio archivio " +
+        "sono state copiate in IndexedDB. " +
+        "Il vecchio archivio non è stato cancellato."
+      );
+    }
+
+  } catch(e) {
+    console.error(e);
+
+    $("statoArchivio").textContent =
+      "⚠️ Archivio non disponibile: " +
+      (e.message || e) +
+      ". Non cancellare i dati precedenti.";
+
+    alert(
+      "Impossibile aprire l'archivio: " +
+      e.message
+    );
+  }
+}
+
+// ===================================
+// MENU PAESI
+// ===================================
 
 const campoPaese = $("paese");
-
 const menu = $("countryOptions");
 
 let menuAperto = false;
@@ -1606,88 +1543,50 @@ let indiceAttivo = -1;
 let filtrati = [];
 
 function aggiornaFlag() {
-
-  const codice = codicePaese(
-    campoPaese.value
-  );
-
+  const c = codicePaese(campoPaese.value);
   $("countryFlag").textContent =
-    codice ? bandiera(codice) : "🌍";
-
+    c ? bandiera(c) : "🌍";
 }
 
 function chiudiPaesi() {
-
   menuAperto = false;
   indiceAttivo = -1;
-
   menu.classList.remove("open");
-
-  campoPaese.setAttribute(
-    "aria-expanded",
-    "false"
-  );
-
+  campoPaese.setAttribute("aria-expanded","false");
 }
 
-function disegnaPaesi(mostraTutti = false) {
-
-  const ricerca = mostraTutti
-    ? ""
-    : norm(campoPaese.value);
+function disegnaPaesi(tutti=false) {
+  const ricerca = tutti ? "" : norm(campoPaese.value);
 
   filtrati = TUTTI_PAESI.filter(p =>
     norm(p.nome).includes(ricerca) ||
     norm(p.codice).includes(ricerca) ||
-    norm(displayNames.of(p.codice))
-      .includes(ricerca)
+    norm(displayNames.of(p.codice)).includes(ricerca)
   );
 
   menu.replaceChildren();
 
-  if (!filtrati.length) {
-
-    info(
-      menu,
-      "div",
-      "Nessun paese trovato.",
-      "country-help"
-    );
-
+  if(!filtrati.length) {
+    info(menu,"div","Nessun paese trovato.","country-help");
     return;
   }
 
-  filtrati.forEach((p, i) => {
-
+  filtrati.forEach((p,i) => {
     const b = document.createElement("button");
 
     b.type = "button";
+    b.className = "country-option" +
+      (i === indiceAttivo ? " selected" : "");
 
-    b.className =
-      "country-option" +
-      (i === indiceAttivo
-        ? " selected"
-        : "");
-
-    b.setAttribute(
-      "role",
-      "option"
-    );
+    b.setAttribute("role","option");
 
     b.append(
-      testo("span", bandiera(p.codice)),
-      testo("span", p.nome)
+      testo("span",bandiera(p.codice)),
+      testo("span",p.nome)
     );
 
-    if (
-      codicePaese(campoPaese.value) ===
-      p.codice
-    ) {
-
-      b.appendChild(
-        testo("span", "✓")
-      );
-
+    if(codicePaese(campoPaese.value) === p.codice) {
+      b.appendChild(testo("span","✓"));
     }
 
     b.addEventListener(
@@ -1701,198 +1600,133 @@ function disegnaPaesi(mostraTutti = false) {
     );
 
     menu.appendChild(b);
-
   });
 }
 
-function apriPaesi(tutti = false) {
-
+function apriPaesi(tutti=false) {
   menuAperto = true;
   indiceAttivo = -1;
 
   disegnaPaesi(tutti);
-
   menu.classList.add("open");
 
-  campoPaese.setAttribute(
-    "aria-expanded",
-    "true"
-  );
-
+  campoPaese.setAttribute("aria-expanded","true");
 }
 
 function impostaPaese(nome) {
+  const c = codicePaese(nome);
 
-  const codice = codicePaese(nome);
-
-  campoPaese.value = codice
-    ? nomePaese(codice)
-    : nome || "";
+  campoPaese.value =
+    c ? nomePaese(c) : nome || "";
 
   aggiornaFlag();
   chiudiPaesi();
-
 }
 
-campoPaese.addEventListener(
-  "focus",
-  () => {
-
-    if (!menuAperto) {
-      apriPaesi(
-        !campoPaese.value.trim()
-      );
-    }
-
+campoPaese.addEventListener("focus",() => {
+  if(!menuAperto) {
+    apriPaesi(!campoPaese.value.trim());
   }
-);
+});
 
-campoPaese.addEventListener(
-  "input",
-  () => {
+campoPaese.addEventListener("input",() => {
+  aggiornaFlag();
+  apriPaesi(false);
+});
 
-    aggiornaFlag();
-    apriPaesi(false);
-
+$("countryArrow").addEventListener("click",() => {
+  if(menuAperto) {
+    chiudiPaesi();
+  } else {
+    apriPaesi(true);
+    campoPaese.focus();
   }
-);
+});
 
-$("countryArrow").addEventListener(
-  "click",
-  () => {
-
-    if (menuAperto) {
-      chiudiPaesi();
-    } else {
-      apriPaesi(true);
-      campoPaese.focus();
-    }
-
+campoPaese.addEventListener("keydown",e => {
+  if(e.key === "Escape") {
+    chiudiPaesi();
+    return;
   }
-);
 
-campoPaese.addEventListener(
-  "keydown",
-  e => {
+  if(e.key === "ArrowDown" ||
+     e.key === "ArrowUp") {
+    e.preventDefault();
 
-    if (e.key === "Escape") {
+    if(!menuAperto) apriPaesi(false);
+    if(!filtrati.length) return;
 
-      chiudiPaesi();
-      return;
-
-    }
-
-    if (
-      e.key === "ArrowDown" ||
-      e.key === "ArrowUp"
-    ) {
-
-      e.preventDefault();
-
-      if (!menuAperto) {
-        apriPaesi(false);
-      }
-
-      indiceAttivo = Math.max(
-        0,
-        Math.min(
-          filtrati.length - 1,
-          indiceAttivo +
+    indiceAttivo = Math.max(
+      0,
+      Math.min(
+        filtrati.length-1,
+        indiceAttivo +
           (e.key === "ArrowDown" ? 1 : -1)
-        )
-      );
-
-      disegnaPaesi(
-        !campoPaese.value.trim()
-      );
-
-      menu.children[indiceAttivo]
-        ?.scrollIntoView({
-          block: "nearest"
-        });
-
-    }
-
-    if (
-      e.key === "Enter" &&
-      menuAperto &&
-      (
-        indiceAttivo >= 0 ||
-        filtrati.length === 1
       )
-    ) {
+    );
 
-      e.preventDefault();
+    disegnaPaesi(!campoPaese.value.trim());
 
-      const p = filtrati[
-        indiceAttivo >= 0
-          ? indiceAttivo
-          : 0
-      ];
-
-      if (p) {
-        impostaPaese(p.nome);
-      }
-
-    }
-
+    menu.children[indiceAttivo]?.scrollIntoView({
+      block:"nearest"
+    });
   }
-);
 
-document.addEventListener(
-  "pointerdown",
-  e => {
+  if(e.key === "Enter" && menuAperto &&
+     (indiceAttivo >= 0 || filtrati.length === 1)) {
+    e.preventDefault();
 
-    if (
-      !$("countryPicker").contains(
-        e.target
-      )
-    ) {
-      chiudiPaesi();
-    }
+    const p = filtrati[
+      indiceAttivo >= 0 ? indiceAttivo : 0
+    ];
 
+    if(p) impostaPaese(p.nome);
   }
-);
+});
 
-// ====================================
+document.addEventListener("pointerdown",e => {
+  if(!$("countryPicker").contains(e.target)) {
+    chiudiPaesi();
+  }
+});
+
+// ===================================
 // MODULO E FOTOGRAFIE
-// ====================================
+// ===================================
+
+function liberaAnteprima() {
+  if(anteprimaURL) {
+    URL.revokeObjectURL(anteprimaURL);
+    anteprimaURL = null;
+  }
+}
 
 function anteprima() {
+  liberaAnteprima();
 
   const img = $("anteprima");
 
   img.style.display =
     fotoCorrente ? "block" : "none";
 
-  if (fotoCorrente) {
-
-    img.src = fotoCorrente;
-
+  if(fotoCorrente instanceof Blob) {
+    anteprimaURL = URL.createObjectURL(fotoCorrente);
+    img.src = anteprimaURL;
   } else {
-
     img.removeAttribute("src");
-
   }
 
   $("rimuoviFoto").style.display =
-    fotoCorrente
-      ? "inline-block"
-      : "none";
-
+    fotoCorrente ? "inline-block" : "none";
 }
 
-function apriModuloNuovo() {
-
+function nuovoModulo() {
   versioneFoto++;
-
   idInModifica = null;
-  fotoCorrente = "";
+  fotoCorrente = null;
 
   $("formCalamita").reset();
-
   impostaPaese("");
-
   anteprima();
 
   $("titoloModulo").textContent =
@@ -1901,45 +1735,30 @@ function apriModuloNuovo() {
   $("salvaCalamita").textContent =
     "Salva calamita";
 
-  $("moduloCard").style.display =
-    "block";
+  $("moduloCard").style.display = "block";
 
   $("moduloCard").scrollIntoView({
-    behavior: "smooth"
+    behavior:"smooth"
   });
-
 }
 
 function modificaCalamita(id) {
-
-  const c = calamite.find(
-    x => x.id === id
-  );
-
-  if (!c) return;
+  const c = calamite.find(x => x.id === id);
+  if(!c) return;
 
   versioneFoto++;
-
   idInModifica = id;
-  fotoCorrente = c.foto || "";
+  fotoCorrente = c.foto || null;
 
-  for (const k of [
-    "nome",
-    "citta",
-    "mese",
-    "anno",
-    "provenienza",
-    "note"
+  for(const k of [
+    "nome","citta","mese",
+    "anno","provenienza","note"
   ]) {
-
     $(k).value = c[k];
-
   }
 
   impostaPaese(c.paese);
-
   $("foto").value = "";
-
   anteprima();
 
   $("titoloModulo").textContent =
@@ -1948,331 +1767,207 @@ function modificaCalamita(id) {
   $("salvaCalamita").textContent =
     "Salva modifiche";
 
-  $("moduloCard").style.display =
-    "block";
+  $("moduloCard").style.display = "block";
 
   $("moduloCard").scrollIntoView({
-    behavior: "smooth"
+    behavior:"smooth"
   });
-
 }
 
 function chiudiModulo() {
-
   versioneFoto++;
-
   idInModifica = null;
-  fotoCorrente = "";
+  fotoCorrente = null;
 
   $("formCalamita").reset();
-
   impostaPaese("");
-
   anteprima();
 
-  $("moduloCard").style.display =
-    "none";
-
+  $("moduloCard").style.display = "none";
 }
 
-$("apriModulo").onclick =
-  apriModuloNuovo;
+$("apriModulo").onclick = nuovoModulo;
+$("annulla").onclick = chiudiModulo;
 
-$("annulla").onclick =
-  chiudiModulo;
+// Comprimi la foto e restituisci un Blob.
 
 function riduciFoto(file) {
-
-  return new Promise(
-    (resolve, reject) => {
-
-      const reader = new FileReader();
-
-      reader.onerror = reject;
-
-      reader.onload = () => {
-
-        const img = new Image();
-
-        img.onerror = reject;
-
-        img.onload = () => {
-
-          const scala = Math.min(
-            1,
-            900 / Math.max(
-              img.width,
-              img.height
-            )
-          );
-
-          const c =
-            document.createElement("canvas");
-
-          c.width = Math.max(
-            1,
-            Math.round(
-              img.width * scala
-            )
-          );
-
-          c.height = Math.max(
-            1,
-            Math.round(
-              img.height * scala
-            )
-          );
-
-          c.getContext("2d").drawImage(
-            img,
-            0,
-            0,
-            c.width,
-            c.height
-          );
-
-          resolve(
-            c.toDataURL(
-              "image/jpeg",
-              .7
-            )
-          );
-
-        };
-
-        img.src = reader.result;
-
-      };
-
-      reader.readAsDataURL(file);
-
-    }
-  );
-
-}
-
-$("foto").addEventListener(
-  "change",
-  async () => {
-
-    const file = $("foto").files[0];
-
-    if (!file) return;
-
-    const v = ++versioneFoto;
-
-    elaborazioneFoto = true;
-
-    $("salvaCalamita").disabled =
-      true;
-
-    try {
-
-      const foto =
-        await riduciFoto(file);
-
-      if (v === versioneFoto) {
-
-        fotoCorrente = foto;
-
-        anteprima();
-
-      }
-
-    } catch (e) {
-
-      if (v === versioneFoto) {
-
-        alert(
-          "Impossibile leggere la fotografia."
-        );
-
-      }
-
-    } finally {
-
-      if (v === versioneFoto) {
-
-        elaborazioneFoto = false;
-
-        $("salvaCalamita").disabled =
-          false;
-
-      }
-
-    }
-
-  }
-);
-
-$("rimuoviFoto").onclick = () => {
-
-  versioneFoto++;
-  elaborazioneFoto = false;
-
-  $("salvaCalamita").disabled = false;
-
-  fotoCorrente = "";
-
-  $("foto").value = "";
-
-  anteprima();
-
-};
-
-$("formCalamita").addEventListener(
-  "submit",
-  e => {
-
-    e.preventDefault();
-
-    if (elaborazioneFoto) return;
-
-    const codice = codicePaese(
-      campoPaese.value
-    );
-
-    if (!codice) {
-
-      alert(
-        "Seleziona un paese " +
-        "dall'elenco con le bandiere."
-      );
-
-      campoPaese.focus();
-
-      return;
-
-    }
-
-    const c = {
-
-      id:
-        idInModifica ||
-        (
-          crypto.randomUUID?.() ||
-          String(Date.now()) + Math.random()
-        ),
-
-      nome:
-        $("nome").value.trim(),
-
-      paese:
-        nomePaese(codice),
-
-      citta:
-        $("citta").value.trim(),
-
-      mese:
-        $("mese").value,
-
-      anno:
-        $("anno").value,
-
-      provenienza:
-        $("provenienza").value.trim(),
-
-      note:
-        $("note").value.trim(),
-
-      foto:
-        fotoCorrente
-
+  return new Promise((resolve,reject) => {
+    const url = URL.createObjectURL(file);
+    const img = new Image();
+
+    img.onerror = () => {
+      URL.revokeObjectURL(url);
+      reject(Error("Immagine non leggibile"));
     };
 
-    const nuove = idInModifica
+    img.onload = () => {
+      URL.revokeObjectURL(url);
 
-      ? calamite.map(
-          x => x.id === idInModifica
-            ? c
-            : x
-        )
+      const scala = Math.min(
+        1,
+        900 / Math.max(img.width,img.height)
+      );
 
-      : [...calamite, c];
+      const canvas = document.createElement("canvas");
 
-    if (salvaDati(nuove)) {
-      chiudiModulo();
+      canvas.width = Math.max(
+        1,
+        Math.round(img.width * scala)
+      );
+
+      canvas.height = Math.max(
+        1,
+        Math.round(img.height * scala)
+      );
+
+      canvas.getContext("2d").drawImage(
+        img,0,0,canvas.width,canvas.height
+      );
+
+      canvas.toBlob(
+        blob => blob
+          ? resolve(blob)
+          : reject(Error("Compressione non riuscita")),
+        "image/jpeg",
+        .72
+      );
+    };
+
+    img.src = url;
+  });
+}
+
+$("foto").addEventListener("change",async() => {
+  const file = $("foto").files[0];
+  if(!file) return;
+
+  const v = ++versioneFoto;
+  elaborazioneFoto = true;
+  $("salvaCalamita").disabled = true;
+
+  try {
+    const blob = await riduciFoto(file);
+
+    if(v === versioneFoto) {
+      fotoCorrente = blob;
+      anteprima();
     }
 
-  }
-);
+  } catch(e) {
+    if(v === versioneFoto) {
+      alert("Impossibile leggere la fotografia.");
+    }
 
-// ====================================
+  } finally {
+    if(v === versioneFoto) {
+      elaborazioneFoto = false;
+      $("salvaCalamita").disabled = false;
+    }
+  }
+});
+
+$("rimuoviFoto").onclick = () => {
+  versioneFoto++;
+  elaborazioneFoto = false;
+  $("salvaCalamita").disabled = false;
+
+  fotoCorrente = null;
+  $("foto").value = "";
+  anteprima();
+};
+
+// SALVA RECORD IN INDEXEDDB
+
+$("formCalamita").addEventListener("submit",async e => {
+  e.preventDefault();
+
+  if(busy || elaborazioneFoto || !db) return;
+
+  const codice = codicePaese(campoPaese.value);
+
+  if(!codice) {
+    alert(
+      "Seleziona un paese dall'elenco con le bandiere."
+    );
+    campoPaese.focus();
+    return;
+  }
+
+  const c = {
+    id:idInModifica || randomId(),
+    nome:$("nome").value.trim(),
+    paese:nomePaese(codice),
+    citta:$("citta").value.trim(),
+    mese:$("mese").value,
+    anno:$("anno").value,
+    provenienza:$("provenienza").value.trim(),
+    note:$("note").value.trim(),
+    foto:fotoCorrente
+  };
+
+  busy = true;
+  $("salvaCalamita").disabled = true;
+
+  try {
+    await scriviUnRecord(c);
+    chiudiModulo();
+    await ricarica();
+  } catch(err) {
+    console.error(err);
+    alert(
+      "Salvataggio non riuscito: " +
+      err.message +
+      ". Non eliminare il backup."
+    );
+  } finally {
+    busy = false;
+    $("salvaCalamita").disabled = false;
+  }
+});
+
+// ===================================
 // ORDINAMENTO E CONTEGGI
-// ====================================
+// ===================================
 
 function valoreData(c) {
-
   const a = Number(c.anno);
 
   return a
-
-    ? a * 100 +
-      Math.max(
-        0,
-        MESI.indexOf(c.mese) + 1
-      )
-
+    ? a*100 + Math.max(0,MESI.indexOf(c.mese)+1)
     : -1;
-
 }
 
 function ordinate() {
-
-  return [...calamite].sort(
-    (a, b) =>
-
-      valoreData(b) -
-      valoreData(a) ||
-
-      a.nome.localeCompare(
-        b.nome,
-        "it"
-      )
-
+  return [...calamite].sort((a,b) =>
+    valoreData(b)-valoreData(a) ||
+    a.nome.localeCompare(b.nome,"it")
   );
-
 }
 
 function conteggiPaesi() {
-
   const m = new Map();
 
   calamite.forEach(c => {
-
     const p = codicePaese(c.paese);
 
-    if (p) {
-
-      m.set(
-        p,
-        (m.get(p) || 0) + 1
-      );
-
+    if(p) {
+      m.set(p,(m.get(p)||0)+1);
     }
-
   });
 
   return m;
-
 }
 
-function mostraImmagine(c, classe) {
+function mostraImmagine(c,classe) {
+  if(c.foto instanceof Blob) {
+    const img = document.createElement("img");
 
-  if (c.foto) {
-
-    const img =
-      document.createElement("img");
-
-    img.src = c.foto;
-
-    img.alt =
-      "Foto di " + c.nome;
-
+    img.src = urlFoto(c.foto);
+    img.alt = "Foto di " + c.nome;
     img.className = classe;
 
     return img;
-
   }
 
   return testo(
@@ -2282,341 +1977,204 @@ function mostraImmagine(c, classe) {
       ? "magnet-placeholder"
       : "detail-placeholder"
   );
-
 }
 
-// ====================================
+// ===================================
 // FINESTRE DETTAGLI
-// ====================================
+// ===================================
 
 let ultimoFocus = null;
 
 function apriPopup(titolo) {
-
   ultimoFocus = document.activeElement;
 
-  $("modalTitle").textContent =
-    titolo;
-
+  $("modalTitle").textContent = titolo;
   $("modalContent").replaceChildren();
-
   $("modalActions").replaceChildren();
 
   $("overlay").classList.add("open");
-
-  document.body.classList.add(
-    "modal-open"
-  );
+  document.body.classList.add("modal-open");
 
   $("closeModal").focus();
-
 }
 
 function chiudiPopup() {
+  $("overlay").classList.remove("open");
+  document.body.classList.remove("modal-open");
 
-  $("overlay").classList.remove(
-    "open"
-  );
-
-  document.body.classList.remove(
-    "modal-open"
-  );
-
-  if (ultimoFocus?.isConnected) {
-
+  if(ultimoFocus?.isConnected) {
     ultimoFocus.focus();
-
   }
-
 }
 
-$("closeModal").onclick =
-  chiudiPopup;
+$("closeModal").onclick = chiudiPopup;
 
-$("overlay").addEventListener(
-  "click",
-  e => {
-
-    if (e.target === $("overlay")) {
-      chiudiPopup();
-    }
-
+$("overlay").addEventListener("click",e => {
+  if(e.target === $("overlay")) {
+    chiudiPopup();
   }
-);
+});
 
-document.addEventListener(
-  "keydown",
-  e => {
-
-    if (
-      e.key === "Escape" &&
-      $("overlay").classList.contains("open")
-    ) {
-
-      chiudiPopup();
-
-    }
-
+document.addEventListener("keydown",e => {
+  if(e.key === "Escape" &&
+     $("overlay").classList.contains("open")) {
+    chiudiPopup();
   }
-);
+});
 
-function rigaInfo(parent, contenuto) {
-
-  info(
-    parent,
-    "p",
-    contenuto
-  );
-
+function rigaInfo(parent,contenuto) {
+  info(parent,"p",contenuto);
 }
 
-// ====================================
-// DETTAGLIO SINGOLA CALAMITA
-// ====================================
+async function eliminaCalamita(id) {
+  if(!confirm("Vuoi eliminare questa calamita?")) return;
+
+  try {
+    await eliminaRecord(id);
+    chiudiPopup();
+
+    if(idInModifica === id) {
+      chiudiModulo();
+    }
+
+    await ricarica();
+  } catch(e) {
+    alert(
+      "Impossibile eliminare la calamita: " +
+      e.message
+    );
+  }
+}
 
 function mostraCalamita(c) {
-
-  apriPopup(
-    "🧲 " + c.nome
-  );
+  apriPopup("🧲 " + c.nome);
 
   const cont = $("modalContent");
 
   cont.appendChild(
-    mostraImmagine(
-      c,
-      "detail-main-photo"
-    )
+    mostraImmagine(c,"detail-main-photo")
   );
 
   rigaInfo(
     cont,
     "📍 " +
-    bandiera(codicePaese(c.paese)) +
-    " " +
-    [c.citta, c.paese]
-      .filter(Boolean)
-      .join(", ")
+    bandiera(codicePaese(c.paese)) + " " +
+    [c.citta,c.paese].filter(Boolean).join(", ")
   );
 
-  if (c.mese || c.anno) {
-
+  if(c.mese || c.anno) {
     rigaInfo(
       cont,
       "🗓️ " +
-      [c.mese, c.anno]
-        .filter(Boolean)
-        .join(" ")
+      [c.mese,c.anno].filter(Boolean).join(" ")
     );
-
   }
 
-  if (c.provenienza) {
-
-    rigaInfo(
-      cont,
-      "🎁 " + c.provenienza
-    );
-
+  if(c.provenienza) {
+    rigaInfo(cont,"🎁 " + c.provenienza);
   }
 
-  if (c.note) {
-
-    info(
-      cont,
-      "h3",
-      "Note e ricordi"
-    );
-
-    info(
-      cont,
-      "p",
-      c.note,
-      "detail-description"
-    );
-
+  if(c.note) {
+    info(cont,"h3","Note e ricordi");
+    info(cont,"p",c.note,"detail-description");
   }
 
-  const edit =
-    document.createElement("button");
-
-  edit.textContent =
-    "✏️ Modifica";
+  const edit = document.createElement("button");
+  edit.textContent = "✏️ Modifica";
 
   edit.onclick = () => {
-
     chiudiPopup();
     modificaCalamita(c.id);
-
   };
 
-  const del =
-    document.createElement("button");
-
+  const del = document.createElement("button");
   del.className = "danger";
-
   del.textContent = "Elimina";
 
-  del.onclick = () => {
+  del.onclick = () => eliminaCalamita(c.id);
 
-    if (
-      confirm(
-        "Vuoi eliminare questa calamita?"
-      ) &&
-
-      salvaDati(
-        calamite.filter(
-          x => x.id !== c.id
-        )
-      )
-
-    ) {
-
-      chiudiPopup();
-
-      if (idInModifica === c.id) {
-        chiudiModulo();
-      }
-
-    }
-
-  };
-
-  $("modalActions").append(
-    edit,
-    del
-  );
-
+  $("modalActions").append(edit,del);
 }
 
-// ====================================
-// DETTAGLIO PAESE MAGNETDEX
-// ====================================
-
 function mostraPaese(p) {
-
   const trovate = ordinate().filter(
-    c => codicePaese(c.paese) ===
-      p.codice
+    c => codicePaese(c.paese) === p.codice
   );
 
-  apriPopup(
-    bandiera(p.codice) +
-    " " + p.nome
-  );
+  apriPopup(bandiera(p.codice) + " " + p.nome);
 
   rigaInfo(
     $("modalContent"),
     trovate.length +
-    (
-      trovate.length === 1
-        ? " calamita"
-        : " calamite"
-    ) +
+    (trovate.length === 1
+      ? " calamita"
+      : " calamite") +
     " nella collezione"
   );
 
   trovate.forEach(c => {
-
-    const row =
-      document.createElement("div");
-
+    const row = document.createElement("div");
     row.className = "detail-row";
 
     row.appendChild(
-      mostraImmagine(
-        c,
-        "detail-row-photo"
-      )
+      mostraImmagine(c,"detail-row-photo")
     );
 
-    const part =
-      document.createElement("div");
+    const part = document.createElement("div");
 
-    info(
-      part,
-      "h3",
-      c.nome
-    );
+    info(part,"h3",c.nome);
 
-    if (c.citta) {
-
-      rigaInfo(
-        part,
-        "📍 " + c.citta
-      );
-
+    if(c.citta) {
+      rigaInfo(part,"📍 " + c.citta);
     }
 
-    if (c.mese || c.anno) {
-
+    if(c.mese || c.anno) {
       rigaInfo(
         part,
         "🗓️ " +
-        [c.mese, c.anno]
-          .filter(Boolean)
-          .join(" ")
+        [c.mese,c.anno].filter(Boolean).join(" ")
       );
-
     }
 
-    if (c.provenienza) {
-
-      rigaInfo(
-        part,
-        "🎁 " + c.provenienza
-      );
-
+    if(c.provenienza) {
+      rigaInfo(part,"🎁 " + c.provenienza);
     }
 
-    if (c.note) {
-
+    if(c.note) {
       info(
         part,
         "p",
         "📝 " + c.note,
         "detail-description"
       );
-
     }
 
     row.appendChild(part);
-
     $("modalContent").appendChild(row);
-
   });
-
 }
 
-// ====================================
-// NUOVA GRIGLIA CALAMITE
-// ====================================
+// ===================================
+// GRIGLIA CALAMITE
+// ===================================
 
 function renderCalamite() {
-
   const lista = $("listaCalamite");
-
   lista.replaceChildren();
 
-  if (!calamite.length) {
-
+  if(!calamite.length) {
     info(
       lista,
       "p",
       "Non hai ancora aggiunto calamite."
     );
-
     return;
-
   }
 
   ordinate().forEach(c => {
-
-    const b =
-      document.createElement("button");
+    const b = document.createElement("button");
 
     b.type = "button";
-
     b.className = "magnet-card";
 
     b.setAttribute(
@@ -2624,254 +2182,154 @@ function renderCalamite() {
       "Apri calamita " + c.nome
     );
 
-    // Fotografia
-
     b.appendChild(
-      mostraImmagine(
-        c,
-        "magnet-photo"
-      )
+      mostraImmagine(c,"magnet-photo")
     );
 
-    // Informazioni
-
-    const body =
-      document.createElement("div");
-
+    const body = document.createElement("div");
     body.className = "magnet-card-body";
 
-    // Nome calamita
+    info(body,"span",c.nome,"magnet-title");
 
     info(
       body,
       "span",
-      c.nome,
-      "magnet-title"
-    );
-
-    // Città e paese
-
-    info(
-      body,
-      "span",
-      bandiera(codicePaese(c.paese)) +
-      " " +
-      [c.citta, c.paese]
-        .filter(Boolean)
-        .join(", "),
+      bandiera(codicePaese(c.paese)) + " " +
+      [c.citta,c.paese].filter(Boolean).join(", "),
       "magnet-sub"
     );
 
-    // Data
-
-    if (c.mese || c.anno) {
-
+    if(c.mese || c.anno) {
       info(
         body,
         "span",
         "🗓️ " +
-        [c.mese, c.anno]
-          .filter(Boolean)
-          .join(" "),
+        [c.mese,c.anno].filter(Boolean).join(" "),
         "magnet-sub"
       );
-
     }
 
-    // ==================================
-    // NUOVO: CHI L'HA REGALATA
-    // ==================================
-
-    if (c.provenienza) {
-
+    if(c.provenienza) {
       info(
         body,
         "span",
         "🎁 " + c.provenienza,
         "magnet-gift"
       );
-
     }
-
-    // Fine informazioni
 
     b.appendChild(body);
 
-    b.onclick = () =>
-      mostraCalamita(c);
+    b.onclick = () => mostraCalamita(c);
 
     lista.appendChild(b);
-
   });
-
 }
 
-// ====================================
+// ===================================
 // STATISTICHE
-// ====================================
+// ===================================
 
 function renderStatistiche(m) {
-
-  const totale =
-    TUTTI_PAESI.length;
+  const totale = TUTTI_PAESI.length;
 
   const p = formatPercent(
-    percent(m.size, totale)
+    percent(m.size,totale)
   );
 
-  $("totaleCalamite").textContent =
-    calamite.length;
-
-  $("totalePaesi").textContent =
-    m.size;
-
-  $("percentualeMondo").textContent =
-    p;
+  $("totaleCalamite").textContent = calamite.length;
+  $("totalePaesi").textContent = m.size;
+  $("percentualeMondo").textContent = p;
 
   $("sottotitoloMondo").textContent =
     "(" + m.size + " su " + totale + ")";
 
-  $("anelloPercentuale").textContent =
-    p;
+  $("anelloPercentuale").textContent = p;
+  $("riepilogoPaesi").textContent = m.size;
+  $("riepilogoCalamite").textContent = calamite.length;
+  $("riepilogoTotali").textContent = totale;
 
-  $("riepilogoPaesi").textContent =
-    m.size;
-
-  $("riepilogoCalamite").textContent =
-    calamite.length;
-
-  $("riepilogoTotali").textContent =
-    totale;
-
-  const gradi =
-    percent(m.size, totale) * 3.6;
+  const gradi = percent(m.size,totale)*3.6;
 
   $("anelloMondo").style.background =
-    "conic-gradient(" +
-    "var(--verde) 0deg " +
-    gradi +
-    "deg,#dcece7 " +
-    gradi +
-    "deg 360deg)";
-
+    "conic-gradient(var(--verde) 0deg " +
+    gradi + "deg,#dcece7 " +
+    gradi + "deg 360deg)";
 }
 
 function renderBarre(m) {
-
-  const list =
-    $("barreContinenti");
-
+  const list = $("barreContinenti");
   list.replaceChildren();
 
   CONTINENTI.forEach(c => {
-
     const n = c.paesi.filter(
       p => m.has(p.codice)
     ).length;
 
-    const perc = percent(
-      n,
-      c.paesi.length
-    );
-
-    const row =
-      document.createElement("div");
+    const perc = percent(n,c.paesi.length);
+    const row = document.createElement("div");
 
     row.className = "bar-row";
 
-    info(
-      row,
-      "span",
-      c.nome
-    );
+    info(row,"span",c.nome);
 
-    const bar =
-      document.createElement("div");
-
+    const bar = document.createElement("div");
     bar.className = "bar";
 
-    const fill =
-      document.createElement("div");
-
+    const fill = document.createElement("div");
     fill.className = "bar-fill";
-
-    fill.style.width =
-      perc + "%";
+    fill.style.width = perc + "%";
 
     bar.appendChild(fill);
 
     row.append(
       bar,
-      testo(
-        "span",
-        formatPercent(perc)
-      )
+      testo("span",formatPercent(perc))
     );
 
     list.appendChild(row);
-
   });
-
 }
 
-// ====================================
+// ===================================
 // CONTINENTI
-// ====================================
+// ===================================
 
-function rigaPaese(p, n = null) {
-
-  const row =
-    document.createElement("div");
-
+function rigaPaese(p,n=null) {
+  const row = document.createElement("div");
   row.className = "country-row";
 
   info(
     row,
     "span",
-    bandiera(p.codice) +
-    " " + p.nome
+    bandiera(p.codice) + " " + p.nome
   );
 
-  if (n !== null) {
-
+  if(n !== null) {
     info(
       row,
       "span",
-      n +
-      (
-        n === 1
-          ? " calamita"
-          : " calamite"
-      ),
+      n + (n === 1
+        ? " calamita"
+        : " calamite"),
       "tag"
     );
-
   }
 
   return row;
-
 }
 
 function renderContinenti(m) {
-
-  const lista =
-    $("listaContinenti");
+  const lista = $("listaContinenti");
 
   const stati = new Map(
-    [
-      ...lista.querySelectorAll(
-        "details[data-cont]"
-      )
-    ].map(d => [
-      d.dataset.cont,
-      d.open
-    ])
+    [...lista.querySelectorAll("details[data-cont]")]
+      .map(d => [d.dataset.cont,d.open])
   );
 
   lista.replaceChildren();
 
-  CONTINENTI.forEach((c, i) => {
-
+  CONTINENTI.forEach((c,i) => {
     const poss = c.paesi.filter(
       p => m.has(p.codice)
     );
@@ -2880,34 +2338,23 @@ function renderContinenti(m) {
       p => !m.has(p.codice)
     );
 
-    const d =
-      document.createElement("details");
-
+    const d = document.createElement("details");
     d.className = "continent";
-
     d.dataset.cont = c.nome;
 
     d.open = stati.has(c.nome)
       ? stati.get(c.nome)
       : i === 0;
 
-    const s =
-      document.createElement("summary");
+    const s = document.createElement("summary");
+
+    info(s,"span","🗺️ " + c.nome,"continent-name");
 
     info(
       s,
       "span",
-      "🗺️ " + c.nome,
-      "continent-name"
-    );
-
-    info(
-      s,
-      "span",
-      poss.length +
-      " / " +
-      c.paesi.length +
-      " paesi",
+      poss.length + " / " +
+      c.paesi.length + " paesi",
       "continent-score"
     );
 
@@ -2915,131 +2362,78 @@ function renderContinenti(m) {
       s,
       "span",
       formatPercent(
-        percent(
-          poss.length,
-          c.paesi.length
-        )
+        percent(poss.length,c.paesi.length)
       ),
       "pill"
     );
 
     d.appendChild(s);
 
-    const content =
-      document.createElement("div");
+    const content = document.createElement("div");
+    content.className = "continent-content";
 
-    content.className =
-      "continent-content";
+    const cols = document.createElement("div");
+    cols.className = "two-columns";
 
-    const cols =
-      document.createElement("div");
-
-    cols.className =
-      "two-columns";
-
-    const yes =
-      document.createElement("div");
-
-    yes.className =
-      "country-list owned";
+    const yes = document.createElement("div");
+    yes.className = "country-list owned";
 
     info(
       yes,
       "h4",
       "✅ Paesi nella tua collezione (" +
-      poss.length +
-      ")"
+      poss.length + ")"
     );
 
-    if (!poss.length) {
-
-      info(
-        yes,
-        "p",
-        "Nessuna calamita per ora."
-      );
-
+    if(!poss.length) {
+      info(yes,"p","Nessuna calamita per ora.");
     }
 
     poss.forEach(p => {
-
       yes.appendChild(
-        rigaPaese(
-          p,
-          m.get(p.codice)
-        )
+        rigaPaese(p,m.get(p.codice))
       );
-
     });
 
-    const no =
-      document.createElement("div");
-
-    no.className =
-      "country-list";
+    const no = document.createElement("div");
+    no.className = "country-list";
 
     info(
       no,
       "h4",
       "🕘 Paesi da collezionare (" +
-      manc.length +
-      ")"
+      manc.length + ")"
     );
 
     manc.forEach(p => {
-
-      no.appendChild(
-        rigaPaese(p)
-      );
-
+      no.appendChild(rigaPaese(p));
     });
 
-    if (!manc.length) {
-
-      info(
-        no,
-        "p",
-        "Continente completato! 🎉"
-      );
-
+    if(!manc.length) {
+      info(no,"p","Continente completato! 🎉");
     }
 
-    cols.append(
-      yes,
-      no
-    );
-
+    cols.append(yes,no);
     content.appendChild(cols);
-
     d.appendChild(content);
-
     lista.appendChild(d);
-
   });
-
 }
 
-// ====================================
+// ===================================
 // MAGNETDEX
-// ====================================
+// ===================================
 
 let dexMode = "sbloccati";
 
 function renderDex(m) {
-
   const grid = $("dexGrid");
-
   grid.replaceChildren();
 
-  const filtro =
-    $("filtroDex").value;
+  const filtro = $("filtroDex").value;
 
   const c = filtro
-
-    ? CONTINENTI.find(
-        x => x.nome === filtro
-      ).paesi
-
+    ? CONTINENTI.find(x => x.nome === filtro).paesi
     : TUTTI_PAESI;
 
   const unlocked = c.filter(
@@ -3047,94 +2441,55 @@ function renderDex(m) {
   );
 
   $("dexCount").textContent =
-    unlocked.length +
-    " / " +
-    c.length +
-    " sbloccati";
+    unlocked.length + " / " +
+    c.length + " sbloccati";
 
-  const arr =
-    dexMode === "sbloccati"
-      ? unlocked
-      : c;
+  const arr = dexMode === "sbloccati"
+    ? unlocked
+    : c;
 
-  if (!arr.length) {
-
+  if(!arr.length) {
     info(
       grid,
       "p",
       "Nessun paese sbloccato qui, per il momento."
     );
-
     return;
-
   }
 
   arr.forEach(p => {
-
-    const n =
-      m.get(p.codice) || 0;
-
-    const b =
-      document.createElement("button");
+    const n = m.get(p.codice) || 0;
+    const b = document.createElement("button");
 
     b.type = "button";
-
-    b.className =
-      "dex-tile" +
-      (
-        n
-          ? ""
-          : " locked"
-      );
-
+    b.className = "dex-tile" + (n ? "" : " locked");
     b.disabled = !n;
 
-    b.title =
-      p.nome +
-      (
-        n
-          ? " - " + n + " calamite"
-          : " - da sbloccare"
-      );
+    b.title = p.nome +
+      (n
+        ? " - " + n + " calamite"
+        : " - da sbloccare");
+
+    info(b,"span",bandiera(p.codice),"dex-flag");
 
     info(
       b,
       "span",
-      bandiera(p.codice),
-      "dex-flag"
-    );
-
-    info(
-      b,
-      "span",
-      n
-        ? "🧲 " + n
-        : "🔒",
+      n ? "🧲 " + n : "🔒",
       "dex-count"
     );
 
-    info(
-      b,
-      "span",
-      p.nome,
-      "dex-name"
-    );
+    info(b,"span",p.nome,"dex-name");
 
-    if (n) {
-
-      b.onclick = () =>
-        mostraPaese(p);
-
+    if(n) {
+      b.onclick = () => mostraPaese(p);
     }
 
     grid.appendChild(b);
-
   });
-
 }
 
 function setDexMode(m) {
-
   dexMode = m;
 
   $("dexUnlocked").classList.toggle(
@@ -3147,184 +2502,162 @@ function setDexMode(m) {
     m === "tutti"
   );
 
-  renderDex(
-    conteggiPaesi()
-  );
-
+  renderDex(conteggiPaesi());
 }
 
-$("dexUnlocked").onclick = () =>
-  setDexMode("sbloccati");
+$("dexUnlocked").onclick =
+  () => setDexMode("sbloccati");
 
-$("dexAll").onclick = () =>
-  setDexMode("tutti");
+$("dexAll").onclick =
+  () => setDexMode("tutti");
 
-$("filtroDex").onchange = () =>
-  renderDex(conteggiPaesi());
-
-// ====================================
-// BACKUP
-// ====================================
-
-$("esportaBackup").onclick = () => {
-
-  const blob = new Blob(
-
-    [
-      JSON.stringify(
-        {
-          applicazione:
-            "Magnetly",
-
-          versione:
-            1,
-
-          dataEsportazione:
-            new Date().toISOString(),
-
-          calamite
-        },
-        null,
-        2
-      )
-    ],
-
-    {
-      type: "application/json"
-    }
-
-  );
-
-  const url =
-    URL.createObjectURL(blob);
-
-  const a =
-    document.createElement("a");
-
-  a.href = url;
-
-  a.download =
-    "Magnetly-backup-" +
-    new Date()
-      .toISOString()
-      .slice(0, 10) +
-    ".json";
-
-  document.body.appendChild(a);
-
-  a.click();
-
-  a.remove();
-
-  setTimeout(
-    () => URL.revokeObjectURL(url),
-    1000
-  );
-
-};
-
-$("importaBackup").onclick = () =>
-  $("fileBackup").click();
-
-$("fileBackup").addEventListener(
-  "change",
-  async () => {
-
-    const file =
-      $("fileBackup").files[0];
-
-    if (!file) return;
-
-    try {
-
-      const b = JSON.parse(
-        await file.text()
-      );
-
-      if (
-        b?.applicazione !== "Magnetly" ||
-        b.versione !== 1 ||
-        !Array.isArray(b.calamite)
-      ) {
-
-        throw Error(
-          "Formato del backup non valido"
-        );
-
-      }
-
-      const nuove =
-        b.calamite.map(
-          normalizzaCalamita
-        );
-
-      if (
-        new Set(
-          nuove.map(c => c.id)
-        ).size !== nuove.length
-      ) {
-
-        throw Error(
-          "ID duplicati"
-        );
-
-      }
-
-      if (
-        confirm(
-          "Vuoi sostituire la collezione attuale " +
-          "con quella del backup?"
-        ) &&
-        salvaDati(nuove)
-      ) {
-
-        chiudiPopup();
-
-        chiudiModulo();
-
-        alert(
-          "Backup importato correttamente!"
-        );
-
-      }
-
-    } catch (e) {
-
-      alert(
-        "Importazione non riuscita: " +
-        e.message
-      );
-
-    } finally {
-
-      $("fileBackup").value = "";
-
-    }
-
-  }
-);
-
-// ====================================
-// AVVIO MAGNETLY
-// ====================================
+$("filtroDex").onchange =
+  () => renderDex(conteggiPaesi());
 
 function aggiornaApp() {
-
   const m = conteggiPaesi();
 
   renderStatistiche(m);
-
   renderBarre(m);
-
   renderContinenti(m);
-
   renderDex(m);
-
   renderCalamite();
-
 }
 
-aggiornaApp();
+// ===================================
+// BACKUP JSON COMPATIBILE
+// ===================================
+
+$("esportaBackup").onclick = async() => {
+  if(!db || busy) return;
+
+  const b = $("esportaBackup");
+  b.disabled = true;
+  b.textContent = "Preparazione backup...";
+
+  try {
+    const dati = [];
+
+    for(const c of calamite) {
+      const {foto,...rest} = c;
+
+      dati.push({
+        ...rest,
+        foto:await blobADataURL(foto)
+      });
+    }
+
+    const backup = {
+      applicazione:"Magnetly",
+      versione:1,
+      dataEsportazione:new Date().toISOString(),
+      calamite:dati
+    };
+
+    const blob = new Blob(
+      [JSON.stringify(backup)],
+      {type:"application/json"}
+    );
+
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+
+    a.href = url;
+
+    a.download =
+      "Magnetly-backup-" +
+      new Date().toISOString().slice(0,10) +
+      ".json";
+
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+
+    setTimeout(
+      () => URL.revokeObjectURL(url),
+      5000
+    );
+
+  } catch(e) {
+    alert(
+      "Esportazione non riuscita: " +
+      e.message
+    );
+
+  } finally {
+    b.disabled = false;
+    b.textContent = "⬇️ Esporta backup";
+  }
+};
+
+$("importaBackup").onclick =
+  () => $("fileBackup").click();
+
+$("fileBackup").addEventListener(
+  "change",
+  async() => {
+    const file = $("fileBackup").files[0];
+    if(!file) return;
+
+    const b = $("importaBackup");
+    b.disabled = true;
+    b.textContent = "Lettura backup...";
+
+    try {
+      const dati = JSON.parse(
+        await file.text()
+      );
+
+      if(dati?.applicazione !== "Magnetly" ||
+         dati.versione !== 1 ||
+         !Array.isArray(dati.calamite)) {
+        throw Error("Formato non valido");
+      }
+
+      const records = await datiDaBackup(
+        dati.calamite
+      );
+
+      if(!confirm(
+        "Importare " + records.length +
+        " calamite? Questa operazione SOSTITUIRÀ " +
+        "la collezione attuale di questo dispositivo. " +
+        "Assicurati di avere il backup attuale."
+      )) return;
+
+      await sostituisciTutto(records);
+
+      chiudiPopup();
+      chiudiModulo();
+      await ricarica();
+
+      alert("Backup importato correttamente!");
+
+    } catch(e) {
+      console.error(e);
+
+      alert(
+        "Importazione non riuscita: " +
+        e.message +
+        ". Il vecchio archivio non è stato cancellato."
+      );
+
+    } finally {
+      b.disabled = false;
+      b.textContent = "⬆️ Importa backup";
+      $("fileBackup").value = "";
+    }
+  }
+);
+
+// ===================================
+// AVVIO MAGNETLY
+// ===================================
+
+// Il vecchio localStorage non viene cancellato.
+// Rimane una copia di emergenza.
+
+avviaArchivio();
 
 </script>
 </body>
